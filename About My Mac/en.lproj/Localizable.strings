@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  About My Mac
+
+  Created by Ben Sova on 9/21/21.
+  
+*/
+
+"PO-AMM-MODEL" = "Model";
+"PO-AMM-PROCESSOR" = "Processor";
+"PO-AMM-GRAPHICS" = "Graphics";
+"PO-AMM-MEMORY" = "Memory";
+"PO-AMM-VERSION" = "Version";
+"PO-AMM-REPORT" = "System Report";
+"PO-AMM-UPDATE" = "Software Update";

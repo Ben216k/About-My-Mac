@@ -11,27 +11,10 @@
 		76B14C2326F9758200E914CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B14C2226F9758200E914CF /* ContentView.swift */; };
 		76B14C2526F9758400E914CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B14C2426F9758400E914CF /* Assets.xcassets */; };
 		76B14C2826F9758400E914CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B14C2726F9758400E914CF /* Preview Assets.xcassets */; };
-		76B14C3226F9758400E914CF /* About_My_MacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B14C3126F9758400E914CF /* About_My_MacTests.swift */; };
-		76B14C3C26F9758400E914CF /* About_My_MacUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B14C3B26F9758400E914CF /* About_My_MacUITests.swift */; };
-		76B14C3E26F9758400E914CF /* About_My_MacUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B14C3D26F9758400E914CF /* About_My_MacUITestsLaunchTests.swift */; };
+		76B14C4C26F9770500E914CF /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76B14C4B26F9770500E914CF /* VeliaUI */; };
+		76B14C4E26F977C200E914CF /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B14C4D26F977C200E914CF /* ShellOut.swift */; };
+		76FD829926FA9E4700EA10B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76FD829B26FA9E4700EA10B7 /* Localizable.strings */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		76B14C2E26F9758400E914CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 76B14C1526F9758200E914CF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 76B14C1C26F9758200E914CF;
-			remoteInfo = "About My Mac";
-		};
-		76B14C3826F9758400E914CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 76B14C1526F9758200E914CF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 76B14C1C26F9758200E914CF;
-			remoteInfo = "About My Mac";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		76B14C1D26F9758200E914CF /* About My Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "About My Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,11 +22,10 @@
 		76B14C2226F9758200E914CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		76B14C2426F9758400E914CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76B14C2726F9758400E914CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		76B14C2D26F9758400E914CF /* About My MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "About My MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76B14C3126F9758400E914CF /* About_My_MacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About_My_MacTests.swift; sourceTree = "<group>"; };
-		76B14C3726F9758400E914CF /* About My MacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "About My MacUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76B14C3B26F9758400E914CF /* About_My_MacUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About_My_MacUITests.swift; sourceTree = "<group>"; };
-		76B14C3D26F9758400E914CF /* About_My_MacUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About_My_MacUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		76B14C4D26F977C200E914CF /* ShellOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
+		76FD829A26FA9E4700EA10B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		76FD829C26FAA49900EA10B7 /* About My Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "About My Mac.entitlements"; sourceTree = "<group>"; };
+		76FD829D26FAA4CA00EA10B7 /* About My MacRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "About My MacRelease.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,20 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76B14C2A26F9758400E914CF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76B14C3426F9758400E914CF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				76B14C4C26F9770500E914CF /* VeliaUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,8 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				76B14C1F26F9758200E914CF /* About My Mac */,
-				76B14C3026F9758400E914CF /* About My MacTests */,
-				76B14C3A26F9758400E914CF /* About My MacUITests */,
 				76B14C1E26F9758200E914CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,8 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				76B14C1D26F9758200E914CF /* About My Mac.app */,
-				76B14C2D26F9758400E914CF /* About My MacTests.xctest */,
-				76B14C3726F9758400E914CF /* About My MacUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,10 +59,14 @@
 		76B14C1F26F9758200E914CF /* About My Mac */ = {
 			isa = PBXGroup;
 			children = (
+				76FD829D26FAA4CA00EA10B7 /* About My MacRelease.entitlements */,
+				76FD829C26FAA49900EA10B7 /* About My Mac.entitlements */,
 				76B14C2026F9758200E914CF /* About_My_MacApp.swift */,
 				76B14C2226F9758200E914CF /* ContentView.swift */,
 				76B14C2426F9758400E914CF /* Assets.xcassets */,
 				76B14C2626F9758400E914CF /* Preview Content */,
+				76B14C4D26F977C200E914CF /* ShellOut.swift */,
+				76FD829B26FA9E4700EA10B7 /* Localizable.strings */,
 			);
 			path = "About My Mac";
 			sourceTree = "<group>";
@@ -108,23 +77,6 @@
 				76B14C2726F9758400E914CF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		76B14C3026F9758400E914CF /* About My MacTests */ = {
-			isa = PBXGroup;
-			children = (
-				76B14C3126F9758400E914CF /* About_My_MacTests.swift */,
-			);
-			path = "About My MacTests";
-			sourceTree = "<group>";
-		};
-		76B14C3A26F9758400E914CF /* About My MacUITests */ = {
-			isa = PBXGroup;
-			children = (
-				76B14C3B26F9758400E914CF /* About_My_MacUITests.swift */,
-				76B14C3D26F9758400E914CF /* About_My_MacUITestsLaunchTests.swift */,
-			);
-			path = "About My MacUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,45 +95,12 @@
 			dependencies = (
 			);
 			name = "About My Mac";
+			packageProductDependencies = (
+				76B14C4B26F9770500E914CF /* VeliaUI */,
+			);
 			productName = "About My Mac";
 			productReference = 76B14C1D26F9758200E914CF /* About My Mac.app */;
 			productType = "com.apple.product-type.application";
-		};
-		76B14C2C26F9758400E914CF /* About My MacTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 76B14C4426F9758400E914CF /* Build configuration list for PBXNativeTarget "About My MacTests" */;
-			buildPhases = (
-				76B14C2926F9758400E914CF /* Sources */,
-				76B14C2A26F9758400E914CF /* Frameworks */,
-				76B14C2B26F9758400E914CF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				76B14C2F26F9758400E914CF /* PBXTargetDependency */,
-			);
-			name = "About My MacTests";
-			productName = "About My MacTests";
-			productReference = 76B14C2D26F9758400E914CF /* About My MacTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		76B14C3626F9758400E914CF /* About My MacUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 76B14C4726F9758400E914CF /* Build configuration list for PBXNativeTarget "About My MacUITests" */;
-			buildPhases = (
-				76B14C3326F9758400E914CF /* Sources */,
-				76B14C3426F9758400E914CF /* Frameworks */,
-				76B14C3526F9758400E914CF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				76B14C3926F9758400E914CF /* PBXTargetDependency */,
-			);
-			name = "About My MacUITests";
-			productName = "About My MacUITests";
-			productReference = 76B14C3726F9758400E914CF /* About My MacUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -196,14 +115,6 @@
 					76B14C1C26F9758200E914CF = {
 						CreatedOnToolsVersion = 13.0;
 					};
-					76B14C2C26F9758400E914CF = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 76B14C1C26F9758200E914CF;
-					};
-					76B14C3626F9758400E914CF = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 76B14C1C26F9758200E914CF;
-					};
 				};
 			};
 			buildConfigurationList = 76B14C1826F9758200E914CF /* Build configuration list for PBXProject "About My Mac" */;
@@ -215,13 +126,14 @@
 				Base,
 			);
 			mainGroup = 76B14C1426F9758200E914CF;
+			packageReferences = (
+				76B14C4A26F9770500E914CF /* XCRemoteSwiftPackageReference "VeliaUI" */,
+			);
 			productRefGroup = 76B14C1E26F9758200E914CF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				76B14C1C26F9758200E914CF /* About My Mac */,
-				76B14C2C26F9758400E914CF /* About My MacTests */,
-				76B14C3626F9758400E914CF /* About My MacUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,21 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B14C2826F9758400E914CF /* Preview Assets.xcassets in Resources */,
+				76FD829926FA9E4700EA10B7 /* Localizable.strings in Resources */,
 				76B14C2526F9758400E914CF /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76B14C2B26F9758400E914CF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76B14C3526F9758400E914CF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,41 +157,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B14C2326F9758200E914CF /* ContentView.swift in Sources */,
+				76B14C4E26F977C200E914CF /* ShellOut.swift in Sources */,
 				76B14C2126F9758200E914CF /* About_My_MacApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76B14C2926F9758400E914CF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				76B14C3226F9758400E914CF /* About_My_MacTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76B14C3326F9758400E914CF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				76B14C3E26F9758400E914CF /* About_My_MacUITestsLaunchTests.swift in Sources */,
-				76B14C3C26F9758400E914CF /* About_My_MacUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		76B14C2F26F9758400E914CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 76B14C1C26F9758200E914CF /* About My Mac */;
-			targetProxy = 76B14C2E26F9758400E914CF /* PBXContainerItemProxy */;
+/* Begin PBXVariantGroup section */
+		76FD829B26FA9E4700EA10B7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76FD829A26FA9E4700EA10B7 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
 		};
-		76B14C3926F9758400E914CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 76B14C1C26F9758200E914CF /* About My Mac */;
-			targetProxy = 76B14C3826F9758400E914CF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		76B14C3F26F9758400E914CF /* Debug */ = {
@@ -415,23 +296,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "About My Mac/About My Mac.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"About My Mac/Preview Content\"";
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
+				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.bensova.About-My-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -444,123 +327,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "About My Mac/About My MacRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"About My Mac/Preview Content\"";
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
+				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.bensova.About-My-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		76B14C4526F9758400E914CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.bensova.About-My-MacTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/About My Mac.app/Contents/MacOS/About My Mac";
-			};
-			name = Debug;
-		};
-		76B14C4626F9758400E914CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.bensova.About-My-MacTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/About My Mac.app/Contents/MacOS/About My Mac";
-			};
-			name = Release;
-		};
-		76B14C4826F9758400E914CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.bensova.About-My-MacUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "About My Mac";
-			};
-			name = Debug;
-		};
-		76B14C4926F9758400E914CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.bensova.About-My-MacUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "About My Mac";
 			};
 			name = Release;
 		};
@@ -585,25 +374,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76B14C4426F9758400E914CF /* Build configuration list for PBXNativeTarget "About My MacTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				76B14C4526F9758400E914CF /* Debug */,
-				76B14C4626F9758400E914CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		76B14C4726F9758400E914CF /* Build configuration list for PBXNativeTarget "About My MacUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				76B14C4826F9758400E914CF /* Debug */,
-				76B14C4926F9758400E914CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76B14C4A26F9770500E914CF /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BenSova/VeliaUI.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76B14C4B26F9770500E914CF /* VeliaUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B14C4A26F9770500E914CF /* XCRemoteSwiftPackageReference "VeliaUI" */;
+			productName = VeliaUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76B14C1526F9758200E914CF /* Project object */;
 }
