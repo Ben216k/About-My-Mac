@@ -8,7 +8,7 @@
 import VeliaUI
 
 struct ContentView: View {
-    @State var systemVersion = "11.%.3"
+    @State var systemVersion = "10.%.3"
     let releaseTrack: String
     @State var gpu = "Intel HD Graphics 400%"
     @State var coolModel = "MacBook Pro (13-inch, M%d 2012)" as String?
@@ -24,7 +24,9 @@ struct ContentView: View {
             HStack {
                 SideImageView(releaseTrack: releaseTrack, version: systemVersion)
                 VStack(alignment: .leading, spacing: 2) {
-                    if systemVersion.hasPrefix("12") {
+                    if systemVersion.hasPrefix("13") {
+                        Text("macOS ").font(.largeTitle).bold() + Text("Ventura").font(.largeTitle)
+                    } else if systemVersion.hasPrefix("12") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Monterey").font(.largeTitle)
                     } else {
                         Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
@@ -39,8 +41,12 @@ struct ContentView: View {
                     HStack(spacing: 10) {
                         VStack(alignment: .leading) {
                             Text(.init("PO-AMM-MODEL")).font(.subheadline).bold()
-                            Text(.init("PO-AMM-PROCESSOR")).font(.subheadline).bold()
-                            Text(.init("PO-AMM-GRAPHICS")).font(.subheadline).bold()
+                            if cpu != gpu {
+                                Text(.init("PO-AMM-PROCESSOR")).font(.subheadline).bold()
+                                Text(.init("PO-AMM-GRAPHICS")).font(.subheadline).bold()
+                            } else {
+                                Text(.init("PO-AMM-CHIP")).font(.subheadline).bold()
+                            }
                             Text(.init("PO-AMM-MEMORY")).bold()
                         }
                         VStack(alignment: .leading) {
@@ -48,8 +54,10 @@ struct ContentView: View {
                                 .redacted(reason: model.contains("%") ? .placeholder : .init())
                             Text(cpu)
                                 .redacted(reason: cpu.contains("%") ? .placeholder : .init())
-                            Text(gpu)
-                                .redacted(reason: gpu.contains("%") ? .placeholder : .init())
+                            if cpu != gpu {
+                                Text(gpu)
+                                    .redacted(reason: gpu.contains("%") ? .placeholder : .init())
+                            }
                             Text("\(memory) GB")
                                 .redacted(reason: memory.contains("%") ? .placeholder : .init())
                         }
@@ -61,7 +69,7 @@ struct ContentView: View {
                         } onClick: {
                             _ = try? call("open -a 'System Information'")
                         }.inPad()
-                            .btColor(releaseTrack == "Developer" || systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
+                            .btColor(systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : (systemVersion.hasPrefix("13") ? .init(r: 255, g: 187, b: 0).opacity(0.8) : .init(r: 0, g: 220, b: 239)))
                         VIButton(id: "SOFTWARE", h: $hovered) {
                             Text(.init("PO-AMM-UPDATE"))
                                 .foregroundColor(.white)
@@ -72,7 +80,7 @@ struct ContentView: View {
                                 NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preferences.softwareupdate")!)
                             }
                         }.inPad()
-                        .btColor(releaseTrack == "Developer" || systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
+                            .btColor(systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : (systemVersion.hasPrefix("13") ? .init(r: 255, g: 187, b: 0).opacity(0.8) : .init(r: 0, g: 220, b: 239)))
                     }.padding(.top, 10)
                 }.font(.subheadline)
                 .foregroundColor(.white)
@@ -129,7 +137,19 @@ struct SideImageView: View {
     let releaseTrack: String
     let scale: CGFloat
     var body: some View {
-        if version.hasPrefix("12")  {
+        if version.hasPrefix("13")  {
+            ZStack {
+                Circle()
+                    .foregroundColor(.init(r: 172, g: 73, b: 55))
+                Image("VenturaFluff")
+                    .interpolation(.high)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(100)
+                    .padding(8)
+            }.frame(width: scale, height: scale)
+                .padding()
+        } else if version.hasPrefix("12")  {
             Image("PMStock")
                 .interpolation(.high)
                 .resizable()
@@ -168,8 +188,20 @@ struct BackGradientView: View {
     @State var endPoint = UnitPoint(x: 0, y: 2)
     var body: some View {
         Group {
-            if releaseTrack == "Developer" || version.hasPrefix("12") {
-                LinearGradient(gradient: .init(colors: [.init(r: 196, g: 0, b: 255), .init(r: 117, g: 0, b: 255)]), startPoint: startPoint, endPoint: endPoint)
+            if version.hasPrefix("13") {
+                ZStack {
+                    Color.white
+                    LinearGradient(gradient: .init(colors: [.init("13A"), .init("13B")]), startPoint: startPoint, endPoint: endPoint)
+//                        .opacity(colorScheme == .dark ? 0.7 : 0.95)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+                            }
+                        }.blendMode(.multiply)
+                }
+            } else if version.hasPrefix("12") {
+                LinearGradient(gradient: .init(colors: [.init(r: 193, g: 0, b: 214), .init(r: 74, g: 0, b: 235)]), startPoint: startPoint, endPoint: endPoint)
                     .opacity(colorScheme == .dark ? 0.7 : 0.96)
                     .onAppear {
                         withAnimation (.easeInOut(duration: 5).repeatForever()) {
@@ -177,7 +209,7 @@ struct BackGradientView: View {
                             self.endPoint = UnitPoint(x: 0, y: 1)
                         }
                     }
-            } else {
+            } else if version.hasPrefix("11") {
                 LinearGradient(gradient: .init(colors: [.init(r: 0, g: 220, b: 239), .init(r: 5, g: 229, b: 136)]), startPoint: startPoint, endPoint: endPoint)
                     .opacity(colorScheme == .dark ? 0.7 : 0.96)
                     .background(Color.black)

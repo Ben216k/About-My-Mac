@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  About My Mac
+
+  Created by Ben Sova on 9/21/21.
+  
+*/
+
+"PO-AMM-CHIP" = "Επεξεργαστής";
+"PO-AMM-REPORT" = "System Report";
+
+"PO-AMM-MODEL" = "Μοντέλο";
+"PO-AMM-PROCESSOR" = "Επεξεργαστής";
+"PO-AMM-GRAPHICS" = "Γραφικά";
+"PO-AMM-MEMORY" = "Μνήμη";
+"PO-AMM-UPDATE" = "Ενημέρωση Λογισμικού";
+"PO-AMM-VERSION" = "Έκδοση";

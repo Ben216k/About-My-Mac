@@ -8,6 +8,7 @@
 
 "PO-AMM-MODEL" = "Model";
 "PO-AMM-PROCESSOR" = "Processor";
+"PO-AMM-CHIP" = "Chip";
 "PO-AMM-GRAPHICS" = "Graphics";
 "PO-AMM-MEMORY" = "Memory";
 "PO-AMM-VERSION" = "Version";
