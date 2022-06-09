@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  About My Mac
+
+  Created by Ben Sova on 9/21/21.
+  
+*/
+
+"PO-AMM-CHIP" = "Čip";
+"PO-AMM-REPORT" = "System Report";
+
+"PO-AMM-MODEL" = "Model";
+"PO-AMM-PROCESSOR" = "Procesor";
+"PO-AMM-GRAPHICS" = "Grafika";
+"PO-AMM-MEMORY" = "Memorija";
+"PO-AMM-UPDATE" = "A~uriranje softvera";
+"PO-AMM-VERSION" = "Verzija";
