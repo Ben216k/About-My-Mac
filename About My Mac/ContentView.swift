@@ -133,6 +133,7 @@ extension Color {
 }
 
 struct SideImageView: View {
+    @Environment(\.colorScheme) var colorScheme
     let version: String
     let releaseTrack: String
     let scale: CGFloat
@@ -140,7 +141,7 @@ struct SideImageView: View {
         if version.hasPrefix("13")  {
             ZStack {
                 Circle()
-                    .foregroundColor(.init(r: 172, g: 73, b: 55))
+                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 87, g: 134, b: 255))
                 Image("VenturaFluff")
                     .interpolation(.high)
                     .resizable()
@@ -186,19 +187,26 @@ struct BackGradientView: View {
     let releaseTrack: String
     @State var startPoint = UnitPoint(x: 0, y: 0)
     @State var endPoint = UnitPoint(x: 0, y: 2)
+    @State var lstartPoint = UnitPoint(x: 0, y: 0)
+    @State var lendPoint = UnitPoint(x: -0.1, y: 0.8)
     var body: some View {
         Group {
             if version.hasPrefix("13") {
                 ZStack {
                     Color.white
                     LinearGradient(gradient: .init(colors: [.init("13A"), .init("13B")]), startPoint: startPoint, endPoint: endPoint)
-//                        .opacity(colorScheme == .dark ? 0.7 : 0.95)
+                        .opacity(colorScheme == .dark ? 1 : 0.00001)
                         .onAppear {
                             withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                 self.endPoint = UnitPoint(x: 1.5, y: 1)
                                 self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+                                self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+                                self.lstartPoint = UnitPoint(x: 0, y: 1)
                             }
                         }.blendMode(.multiply)
+                    LinearGradient(gradient: .init(colors: [.init("13A"), .init("13B")]), startPoint: lstartPoint, endPoint: lendPoint)
+                        .blendMode(.multiply)
+                        .opacity(colorScheme == .light ? 1 : 0.00001)
                 }
             } else if version.hasPrefix("12") {
                 LinearGradient(gradient: .init(colors: [.init(r: 193, g: 0, b: 214), .init(r: 74, g: 0, b: 235)]), startPoint: startPoint, endPoint: endPoint)
