@@ -9,55 +9,66 @@ import SwiftUI
 
 struct About_My_MacApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State var style = AMStyles.bigSur1
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(style: $style)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
         }.windowStyle(HiddenTitleBarWindowStyle())
-        .commands(content: {
-            Group {
-                CommandGroup(replacing: .newItem) {}
-                CommandGroup(replacing: CommandGroupPlacement.importExport) {}
-                CommandGroup(replacing: CommandGroupPlacement.appVisibility) {}
-                CommandGroup(replacing: CommandGroupPlacement.pasteboard) {}
-                CommandGroup(replacing: CommandGroupPlacement.undoRedo) {}
-                CommandGroup(replacing: CommandGroupPlacement.textEditing) {}
-                CommandGroup(replacing: CommandGroupPlacement.windowArrangement) {}
-                CommandGroup(replacing: CommandGroupPlacement.windowList) {}
-                CommandGroup(replacing: CommandGroupPlacement.saveItem) {}
-                CommandGroup(replacing: CommandGroupPlacement.systemServices) {}
-            }
-            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
-        })
+//        .commands(content: {
+//            Group {
+//                CommandGroup(replacing: .newItem) {}
+//                CommandGroup(replacing: CommandGroupPlacement.importExport) {}
+//                CommandGroup(replacing: CommandGroupPlacement.appVisibility) {}
+//                CommandGroup(replacing: CommandGroupPlacement.pasteboard) {}
+//                CommandGroup(replacing: CommandGroupPlacement.undoRedo) {}
+//                CommandGroup(replacing: CommandGroupPlacement.textEditing) {}
+//                CommandGroup(replacing: CommandGroupPlacement.windowArrangement) {}
+//                CommandGroup(replacing: CommandGroupPlacement.windowList) {}
+//                CommandGroup(replacing: CommandGroupPlacement.saveItem) {}
+//                CommandGroup(replacing: CommandGroupPlacement.systemServices) {}
+//            }
+//            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
+//        })
+        Settings {
+            PreferencesView(selectedStyle: $style)
+                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+        }.windowStyle(HiddenTitleBarWindowStyle())
     }
 }
 
 @available(macOS 13, *)
 struct About_My_MacApp13: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State var style = AMStyles.bigSur1
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+            ContentView(style: $style)
+                .frame(minWidth: 600, maxWidth: 600, minHeight: 355, maxHeight: 355)
         }.windowStyle(HiddenTitleBarWindowStyle())
             .windowResizability(WindowResizability.contentSize)
-        .commands(content: {
-            Group {
-                CommandGroup(replacing: .newItem) {}
-                CommandGroup(replacing: CommandGroupPlacement.importExport) {}
-                CommandGroup(replacing: CommandGroupPlacement.appVisibility) {}
-                CommandGroup(replacing: CommandGroupPlacement.pasteboard) {}
-                CommandGroup(replacing: CommandGroupPlacement.undoRedo) {}
-                CommandGroup(replacing: CommandGroupPlacement.textEditing) {}
-                CommandGroup(replacing: CommandGroupPlacement.windowArrangement) {}
-                CommandGroup(replacing: CommandGroupPlacement.windowList) {}
-                CommandGroup(replacing: CommandGroupPlacement.saveItem) {}
-                CommandGroup(replacing: CommandGroupPlacement.systemServices) {}
-            }
-            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
-        })
+//        .commands(content: {
+//            Group {
+//                CommandGroup(replacing: .newItem) {}
+//                CommandGroup(replacing: CommandGroupPlacement.importExport) {}
+//                CommandGroup(replacing: CommandGroupPlacement.appVisibility) {}
+//                CommandGroup(replacing: CommandGroupPlacement.pasteboard) {}
+//                CommandGroup(replacing: CommandGroupPlacement.undoRedo) {}
+//                CommandGroup(replacing: CommandGroupPlacement.textEditing) {}
+//                CommandGroup(replacing: CommandGroupPlacement.windowArrangement) {}
+//                CommandGroup(replacing: CommandGroupPlacement.windowList) {}
+//                CommandGroup(replacing: CommandGroupPlacement.saveItem) {}
+//                CommandGroup(replacing: CommandGroupPlacement.systemServices) {}
+//            }
+//            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
+//        })
+        Settings {
+            PreferencesView(selectedStyle: $style)
+                .frame(minWidth: 400, maxWidth: 400, minHeight: 500, maxHeight: 500)
+        }.windowStyle(HiddenTitleBarWindowStyle())
+            .windowResizability(WindowResizability.contentSize)
     }
 }
 
@@ -91,6 +102,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         true
     }
-
 
 }

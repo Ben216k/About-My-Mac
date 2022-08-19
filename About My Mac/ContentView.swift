@@ -17,12 +17,13 @@ struct ContentView: View {
     @State var memory = "1%"
     @State var buildNumber: String
     @State var hovered: String?
+    @Binding var style: AMStyles
     
     var body: some View {
         ZStack {
-            BackGradientView(version: systemVersion, releaseTrack: releaseTrack)
+            BackGradientView(version: systemVersion, releaseTrack: releaseTrack, style: style)
             HStack {
-                SideImageView(releaseTrack: releaseTrack, version: systemVersion)
+                SideImageView(releaseTrack: releaseTrack, version: systemVersion, style: style)
                 VStack(alignment: .leading, spacing: 2) {
                     if systemVersion.hasPrefix("13") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Ventura").font(.largeTitle)
@@ -31,7 +32,7 @@ struct ContentView: View {
                     } else {
                         Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
                     }
-                    Text("\(NSLocalizedString("PO-AMM-VERSION", comment: "PO-AMM-VERSION")) \(systemVersion)\(buildNumber.count < 8 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
+                    Text("\(NSLocalizedString("PO-AMM-VERSION", comment: "PO-AMM-VERSION")) \(systemVersion)\(buildNumber.count < 8 ? "" : " Beta") \(buildNumber)").font(.subheadline)
                         .redacted(reason: systemVersion.contains("%") ? .placeholder : .init())
                     Rectangle().frame(height: 10).opacity(0).fixedSize()
                     if let coolModel = coolModel {
@@ -63,14 +64,14 @@ struct ContentView: View {
                         }
                     }
                     HStack {
-                        VIButton(id: "HOME", h: $hovered) {
+                        VIButtonBlend(id: "HOME", h: $hovered) {
                             Text(.init("PO-AMM-REPORT"))
                                 .foregroundColor(.white)
                         } onClick: {
                             _ = try? call("open -a 'System Information'")
                         }.inPad()
                             .btColor(systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : (systemVersion.hasPrefix("13") ? .init(r: 255, g: 187, b: 0).opacity(0.8) : .init(r: 0, g: 220, b: 239)))
-                        VIButton(id: "SOFTWARE", h: $hovered) {
+                        VIButtonBlend(id: "SOFTWARE", h: $hovered) {
                             Text(.init("PO-AMM-UPDATE"))
                                 .foregroundColor(.white)
                         } onClick: {
@@ -85,13 +86,22 @@ struct ContentView: View {
                 }.font(.subheadline)
                 .foregroundColor(.white)
                 .onAppear {
+                    self.style = AMStyles(rawValue: UserDefaults.standard.string(forKey: "Style") ?? "BigSur1") ?? .bigSur1
+                    #if RELEASE
                     systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
+                    #else
+                    systemVersion = "11.xx.yy"
+                    #endif
+                    sysVersion = systemVersion
                     print("Detected System Version: \(systemVersion)")
                     self.model = (try? call("sysctl -n hw.model")) ?? "UnknownX,Y"
                     cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
                     cpu = String(cpu.split(separator: "@")[0])
                     print("Detected CPU: \(cpu)")
                     gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+                    if gpu.count <= 2 {
+                        gpu = "No GPU Detected.."
+                    }
                     gpu.removeLast(2)
                     print("Detected GPU: \(gpu)")
                     memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024))\"")) ?? "-100"
@@ -109,9 +119,12 @@ struct ContentView: View {
         }.ignoresSafeArea()
     }
     
-    init() {
+    init(style: Binding<AMStyles>) {
+        print("Helllooo!")
+        self._style = style
         self.releaseTrack = "Release"
-        self.buildNumber = (try? call("sw_vers | grep BuildVersion: | cut -c 15-")) ?? "20xyyzzz"
+        self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "20xyyzzz"
+//        self.buildNumber.removeLast()
         print("Detected macOS Build Number: \(buildNumber)")
     }
 }
@@ -137,11 +150,16 @@ struct SideImageView: View {
     let version: String
     let releaseTrack: String
     let scale: CGFloat
+    var style: AMStyles
+    
     var body: some View {
         if version.hasPrefix("13")  {
             ZStack {
                 Circle()
-                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 87, g: 134, b: 255))
+//                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 87, g: 134, b: 255))
+//                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 252, g: 165, b: 3))
+                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 210, g: 210, b: 210))
+                    .blendMode(colorScheme == .dark ? .normal : .multiply)
                 Image("VenturaFluff")
                     .interpolation(.high)
                     .resizable()
@@ -157,27 +175,49 @@ struct SideImageView: View {
                 .scaledToFit()
                 .frame(width: scale, height: scale)
                 .padding()
-        } else if releaseTrack == "Beta" || releaseTrack == "Developer" {
-            Image("BigSurLake")
-                .interpolation(.high)
-                .resizable()
-                .scaledToFit()
-                .frame(width: scale, height: scale)
-                .padding()
         } else {
-            Image("BigSurSafari")
-                .interpolation(.high)
-                .resizable()
-                .scaledToFit()
-                .frame(width: scale, height: scale)
-                .padding()
+            if style == .mario {
+                ZStack {
+                    Circle()
+                        .foregroundColor(.init(r: 200, g: 200, b: 200))
+                        .blendMode(.multiply)
+                    Image("BigSurThing")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(100)
+                        .padding(8)
+                }.frame(width: scale, height: scale)
+                    .padding()
+            } else if style == .water {
+                ZStack {
+                    Circle()
+                        .foregroundColor(.init(r: 200, g: 200, b: 200))
+                        .blendMode(.multiply)
+                    Image("BigSurLake")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(100)
+                        .padding(8)
+                }.frame(width: scale, height: scale)
+                    .padding()
+            } else {
+                Image("BigSurSafari")
+                    .interpolation(.high)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: scale, height: scale)
+                    .padding()
+            }
         }
     }
     
-    init(releaseTrack: String, scale: CGFloat = 140, version: String = "") {
+    init(releaseTrack: String, scale: CGFloat = 140, version: String = "", style: AMStyles) {
         self.releaseTrack = releaseTrack
         self.scale = scale
         self.version = version
+        self.style = style
     }
 }
 
@@ -189,6 +229,8 @@ struct BackGradientView: View {
     @State var endPoint = UnitPoint(x: 0, y: 2)
     @State var lstartPoint = UnitPoint(x: 0, y: 0)
     @State var lendPoint = UnitPoint(x: -0.1, y: 0.8)
+    var style: AMStyles
+    
     var body: some View {
         Group {
             if version.hasPrefix("13") {
@@ -218,16 +260,53 @@ struct BackGradientView: View {
                         }
                     }
             } else if version.hasPrefix("11") {
-                LinearGradient(gradient: .init(colors: [.init(r: 0, g: 220, b: 239), .init(r: 5, g: 229, b: 136)]), startPoint: startPoint, endPoint: endPoint)
-                    .opacity(colorScheme == .dark ? 0.7 : 0.96)
-                    .background(Color.black)
-                    .onAppear {
-                        withAnimation (.easeInOut(duration: 5).repeatForever()) {
-                            self.startPoint = UnitPoint(x: 1, y: -1)
-                            self.endPoint = UnitPoint(x: 0, y: 1)
+                if style == .mario {
+                    LinearGradient(gradient: .init(colors: [.init("Mario1"), .init("Mario2")]), startPoint: startPoint, endPoint: endPoint)
+                        .opacity(colorScheme == .dark ? 1 : 1)
+                        .blendMode(.normal)
+                    //                    .background(Color.black)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 5).repeatForever()) {
+                                self.startPoint = UnitPoint(x: 1, y: -0.5)
+                                self.endPoint = UnitPoint(x: 0.5, y: 1)
+                            }
                         }
-                    }
+                } else if style == .lime {
+                    LinearGradient(gradient: .init(colors: [.init("BSLime1"), .init("BSLime2")]), startPoint: startPoint, endPoint: endPoint)
+                        .opacity(colorScheme == .dark ? 1 : 1)
+                        .blendMode(.normal)
+                    //                    .background(Color.black)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 5).repeatForever()) {
+                                self.startPoint = UnitPoint(x: 1, y: -0.5)
+                                self.endPoint = UnitPoint(x: 0.5, y: 1)
+                            }
+                        }
+                } else if style == .water {
+                    LinearGradient(gradient: .init(colors: [.init("BSWater1"), .init("BSWater2")]), startPoint: startPoint, endPoint: endPoint)
+                        .opacity(colorScheme == .dark ? 1 : 1)
+                        .blendMode(.normal)
+                    //                    .background(Color.black)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 5).repeatForever()) {
+                                self.startPoint = UnitPoint(x: 1, y: -0.5)
+                                self.endPoint = UnitPoint(x: 0.5, y: 1)
+                            }
+                        }
+                } else {
+                    LinearGradient(gradient: .init(colors: [.init(r: 0, g: 220, b: 239), .init(r: 5, g: 229, b: 136)]), startPoint: startPoint, endPoint: endPoint)
+                        .opacity(colorScheme == .dark ? 0.7 : 0.9)
+                        .blendMode(.normal)
+                        .background(Color.black)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 5).repeatForever()) {
+                                self.startPoint = UnitPoint(x: 1, y: -1)
+                                self.endPoint = UnitPoint(x: 0, y: 1)
+                            }
+                        }
+                }
             }
         }
     }
 }
+var sysVersion = "11.xx.yy"
