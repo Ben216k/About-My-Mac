@@ -42,11 +42,25 @@ struct PreferencesView : View {
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .lime, gradient: [.init("BSLime1"), .init("BSLime2")])
                         
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .water, gradient: [.init("BSWater1"), .init("BSWater2")])
-                    } else {
+                    } else if sysVersion.hasPrefix("12") {
                         
                         // MARK: Monterey Styles
                         
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .monterey1, gradient: [.init(r: 193, g: 0, b: 214), .init(r: 74, g: 0, b: 235)])
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .monterey2, gradient: [.init("MontereyA1"), .init("MontereyA2")])
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .pink, gradient: [.init("P1NK"), .init("P2NK")])
+                        
+                    } else {
+                        
+                        // MARK: Ventura Styles
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .venLight, gradient: [.init("13LA"), .init("13LB")])
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .venDark, gradient: [.init("13DA"), .init("13DB")])
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .venBlue, gradient: [.init("13D1"), .init("13D2")])
                         
                     }
 
@@ -114,4 +128,9 @@ enum AMStyles: String {
     case lime = "Lime"
     case water = "Water"
     case monterey1 = "Monterey1"
+    case monterey2 = "Monterey2"
+    case pink = "PINK"
+    case venLight = "VenturaL"
+    case venDark = "VenturaD"
+    case venBlue = "VenturaB"
 }

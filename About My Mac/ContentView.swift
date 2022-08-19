@@ -90,7 +90,7 @@ struct ContentView: View {
                     #if RELEASE
                     systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
                     #else
-                    systemVersion = "11.xx.yy"
+                    systemVersion = "13.xx.yy"
                     #endif
                     sysVersion = systemVersion
                     print("Detected System Version: \(systemVersion)")
@@ -155,26 +155,53 @@ struct SideImageView: View {
     var body: some View {
         if version.hasPrefix("13")  {
             ZStack {
-                Circle()
-//                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 87, g: 134, b: 255))
-//                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 252, g: 165, b: 3))
-                    .foregroundColor(colorScheme == .dark ? .init(r: 172, g: 73, b: 55) : .init(r: 210, g: 210, b: 210))
-                    .blendMode(colorScheme == .dark ? .normal : .multiply)
-                Image("VenturaFluff")
-                    .interpolation(.high)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(100)
-                    .padding(8)
+                if style == .venDark || style == .venBlue {
+                    Circle()
+                        .foregroundColor(style == .venDark ? .init(r: 172, g: 73, b: 55) : .init(r: 1, g: 48, b: 120))
+                        .blendMode(.normal)
+                    Image(style == .venDark ? "VenturaFluff" : "BlueFluff")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .preferredColorScheme(.dark)
+                        .cornerRadius(100)
+                        .padding(8)
+                } else {
+                    Circle()
+                        .foregroundColor(.init(r: 210, g: 210, b: 210))
+                        .blendMode(.multiply)
+                    Image("VenturaFluff")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .preferredColorScheme(.light)
+                        .cornerRadius(100)
+                        .padding(8)
+                }
             }.frame(width: scale, height: scale)
                 .padding()
         } else if version.hasPrefix("12")  {
-            Image("PMStock")
-                .interpolation(.high)
-                .resizable()
-                .scaledToFit()
-                .frame(width: scale, height: scale)
-                .padding()
+            if style == .pink {
+                ZStack {
+                    Circle()
+                        .foregroundColor(.init(r: 200, g: 200, b: 200))
+                        .blendMode(.multiply)
+                    Image("MontereyLight")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(100)
+                        .padding(8)
+                }.frame(width: scale, height: scale)
+                    .padding()
+            } else {
+                Image("PMStock")
+                    .interpolation(.high)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: scale, height: scale)
+                    .padding()
+            }
         } else {
             if style == .mario {
                 ZStack {
@@ -235,30 +262,71 @@ struct BackGradientView: View {
         Group {
             if version.hasPrefix("13") {
                 ZStack {
-                    Color.white
-                    LinearGradient(gradient: .init(colors: [.init("13A"), .init("13B")]), startPoint: startPoint, endPoint: endPoint)
-                        .opacity(colorScheme == .dark ? 1 : 0.00001)
-                        .onAppear {
-                            withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
-                                self.endPoint = UnitPoint(x: 1.5, y: 1)
-                                self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-                                self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
-                                self.lstartPoint = UnitPoint(x: 0, y: 1)
-                            }
-                        }.blendMode(.multiply)
-                    LinearGradient(gradient: .init(colors: [.init("13A"), .init("13B")]), startPoint: lstartPoint, endPoint: lendPoint)
-                        .blendMode(.multiply)
-                        .opacity(colorScheme == .light ? 1 : 0.00001)
+                    if style == .venDark {
+                        LinearGradient(gradient: .init(colors: [.init("13DA"), .init("13DB")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
+                                }
+                            }.blendMode(.normal)
+                    } else if style == .venBlue {
+                        LinearGradient(gradient: .init(colors: [.init("13D1"), .init("13D2")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
+                                }
+                            }.blendMode(.normal)
+                    } else {
+                        LinearGradient(gradient: .init(colors: [.init("13LA"), .init("13LB")]), startPoint: lstartPoint, endPoint: lendPoint)
+                            .blendMode(.normal)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+//                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+//                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
+                                }
+                            }.blendMode(.normal)
+                    }
                 }
             } else if version.hasPrefix("12") {
-                LinearGradient(gradient: .init(colors: [.init(r: 193, g: 0, b: 214), .init(r: 74, g: 0, b: 235)]), startPoint: startPoint, endPoint: endPoint)
-                    .opacity(colorScheme == .dark ? 0.7 : 0.96)
-                    .onAppear {
-                        withAnimation (.easeInOut(duration: 5).repeatForever()) {
-                            self.startPoint = UnitPoint(x: 1, y: -1)
-                            self.endPoint = UnitPoint(x: 0, y: 1)
+                if style == .monterey2 {
+                    LinearGradient(gradient: .init(colors: [.init("MontereyA1"), .init("MontereyA2")]), startPoint: startPoint, endPoint: endPoint)
+                        .blendMode(.normal)
+                        .opacity(colorScheme == .dark ? 0.7 : 0.96)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 5).repeatForever()) {
+                                self.startPoint = UnitPoint(x: 1, y: -1)
+                                self.endPoint = UnitPoint(x: 0, y: 1)
+                            }
                         }
-                    }
+                } else if style == .pink {
+                    LinearGradient(gradient: .init(colors: [.init("P1NK"), .init("P2NK")]), startPoint: startPoint, endPoint: endPoint)
+                        .blendMode(.normal)
+                        .opacity(colorScheme == .dark ? 0.7 : 0.96)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 5).repeatForever()) {
+                                self.startPoint = UnitPoint(x: 1, y: -1)
+                                self.endPoint = UnitPoint(x: 0, y: 1)
+                            }
+                        }
+                } else {
+                    LinearGradient(gradient: .init(colors: [.init(r: 193, g: 0, b: 214), .init(r: 74, g: 0, b: 235)]), startPoint: startPoint, endPoint: endPoint)
+                        .blendMode(.normal)
+                        .opacity(colorScheme == .dark ? 0.7 : 0.96)
+                        .onAppear {
+                            withAnimation (.easeInOut(duration: 5).repeatForever()) {
+                                self.startPoint = UnitPoint(x: 1, y: -1)
+                                self.endPoint = UnitPoint(x: 0, y: 1)
+                            }
+                        }
+                }
             } else if version.hasPrefix("11") {
                 if style == .mario {
                     LinearGradient(gradient: .init(colors: [.init("Mario1"), .init("Mario2")]), startPoint: startPoint, endPoint: endPoint)
