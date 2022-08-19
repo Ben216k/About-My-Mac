@@ -33,7 +33,7 @@ struct About_My_MacApp: App {
 //        })
         Settings {
             PreferencesView(selectedStyle: $style)
-                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+                .frame(minWidth: 400, maxWidth: 400, minHeight: 320, maxHeight: 320)
         }.windowStyle(HiddenTitleBarWindowStyle())
     }
 }
@@ -66,7 +66,7 @@ struct About_My_MacApp13: App {
 //        })
         Settings {
             PreferencesView(selectedStyle: $style)
-                .frame(minWidth: 400, maxWidth: 400, minHeight: 500, maxHeight: 500)
+                .frame(minWidth: 400, maxWidth: 400, minHeight: 320, maxHeight: 320)
         }.windowStyle(HiddenTitleBarWindowStyle())
             .windowResizability(WindowResizability.contentSize)
     }

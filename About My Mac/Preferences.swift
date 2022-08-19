@@ -22,7 +22,7 @@ struct PreferencesView : View {
                     VIButton(id: "GITHUB", h: $hovered) {
                         Image("GitHubMark")
                     } onClick: {
-                        NSWorkspace.shared.open("https://github.com/Ben216k/Patched-Sur")
+//                        NSWorkspace.shared.open("https://github.com/Ben216k/Patched-Sur")
                     }
                 }.padding(.bottom, 5)
                 
@@ -68,6 +68,12 @@ struct PreferencesView : View {
                 .padding(.leading, -4)
                 
                 Rectangle().frame(height: 0)
+                
+                Text("Acknowledgements")
+                    .font(.headline.weight(.semibold))
+                    .padding(.bottom, 1)
+                
+                Text("- JohnSundell's ShellOut Library (github.com/JohnSundell/ShellOut)\n- The beta testers and feature suggesters on the Ursinia Projects discord. (discord.gg/2DxVn4HDX6)")
                 
             }.padding(30)
         }
