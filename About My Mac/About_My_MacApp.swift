@@ -33,7 +33,7 @@ struct About_My_MacApp: App {
 //        })
         Settings {
             PreferencesView(selectedStyle: $style)
-                .frame(minWidth: 400, maxWidth: 400, minHeight: 320, maxHeight: 320)
+                .frame(minWidth: 400, maxWidth: 400, minHeight: 335, maxHeight: 335)
         }.windowStyle(HiddenTitleBarWindowStyle())
     }
 }

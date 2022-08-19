@@ -73,7 +73,7 @@ struct PreferencesView : View {
                     .font(.headline.weight(.semibold))
                     .padding(.bottom, 1)
                 
-                Text("- JohnSundell's ShellOut Library (github.com/JohnSundell/ShellOut)\n- The beta testers and feature suggesters on the Ursinia Projects discord. (discord.gg/2DxVn4HDX6)")
+                Text("- JohnSundell's ShellOut Library (github.com/JohnSundell/ShellOut)\n- The beta testers and feature suggesters on the Ursinia Projects discord. (discord.gg/2DxVn4HDX6)\n - 0xCUBE's and MDNich's contributions from their project (github.com/0xCUB3/About-This-Hack)")
                 
             }.padding(30)
         }

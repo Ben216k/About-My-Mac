@@ -87,30 +87,33 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .onAppear {
                     self.style = AMStyles(rawValue: UserDefaults.standard.string(forKey: "Style") ?? "BigSur1") ?? .bigSur1
-                    #if RELEASE
                     systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
-                    #else
-                    systemVersion = "13.xx.yy"
-                    #endif
                     sysVersion = systemVersion
                     print("Detected System Version: \(systemVersion)")
-                    self.model = (try? call("sysctl -n hw.model")) ?? "UnknownX,Y"
-                    cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
-                    cpu = String(cpu.split(separator: "@")[0])
-                    print("Detected CPU: \(cpu)")
-                    gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
-                    if gpu.count <= 2 {
-                        gpu = "No GPU Detected.."
-                    }
-                    gpu.removeLast(2)
-                    print("Detected GPU: \(gpu)")
-                    memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024))\"")) ?? "-100"
-                    print("Detected Memory Amount: \(memory)")
-                    _ = try? call("curl -s 'https://support-sp.apple.com/sp/product?cc='$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}' | cut -c 9-) | sed 's|.*<configCode>\\(.*\\)</configCode>.*|\\1|'")
                     DispatchQueue.global(qos: .background).async {
-                        guard let newModel = try? call("curl -s 'https://support-sp.apple.com/sp/product?cc='$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}' | cut -c 9-) | sed 's|.*<configCode>\\(.*\\)</configCode>.*|\\1|'") else {
-                            coolModel = nil
-                            return
+                        self.model = (try? call("sysctl -n hw.model")) ?? "UnknownX,Y"
+                        cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+                        cpu = String(cpu.split(separator: "@")[0])
+                        print("Detected CPU: \(cpu)")
+                        gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+                        if gpu.count <= 2 {
+                            gpu = "No GPU Detected.."
+                        }
+                        gpu.removeLast(2)
+                        print("Detected GPU: \(gpu)")
+                        memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024))\"")) ?? "-100"
+                        print("Detected Memory Amount: \(memory)")
+                        var newModel = getMacName(infoString: self.model) as String?
+                        if newModel == "Mac" {
+                            guard let newNewModel = try? call("curl -s 'https://support-sp.apple.com/sp/product?cc='$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}' | cut -c 9-) | sed 's|.*<configCode>\\(.*\\)</configCode>.*|\\1|'") else {
+                                coolModel = nil
+                                return
+                            }
+                            if newNewModel.hasPrefix("<") {
+                                newModel = nil
+                            } else {
+                                newModel = newNewModel
+                            }
                         }
                         coolModel = newModel
                     }
