@@ -13,7 +13,7 @@ struct About_My_MacApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(style: $style)
+            SuperView(style: $style)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
         }.windowStyle(HiddenTitleBarWindowStyle())
 //        .commands(content: {
@@ -45,7 +45,7 @@ struct About_My_MacApp13: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(style: $style)
+            SuperView(style: $style)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 355, maxHeight: 355)
         }.windowStyle(HiddenTitleBarWindowStyle())
             .windowResizability(WindowResizability.contentSize)

@@ -18,9 +18,10 @@ struct ContentView: View {
     @State var buildNumber: String
     @State var hovered: String?
     @Binding var style: AMStyles
+    @Binding var page: ViewPages
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottomTrailing) {
             BackGradientView(version: systemVersion, releaseTrack: releaseTrack, style: style)
             HStack {
                 SideImageView(releaseTrack: releaseTrack, version: systemVersion, style: style)
@@ -119,12 +120,23 @@ struct ContentView: View {
                     }
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            Button {
+                withAnimation {
+                    page = .storage
+                }
+            } label: {
+                Image(systemName: "chevron.right.square.fill")
+                    .font(.title2.bold())
+                    .foregroundColor(.white)
+                    .padding(15)
+            }.buttonStyle(.borderless)
         }.ignoresSafeArea()
     }
     
-    init(style: Binding<AMStyles>) {
+    init(style: Binding<AMStyles>, page: Binding<ViewPages>) {
         print("Helllooo!")
         self._style = style
+        self._page = page
         self.releaseTrack = "Release"
         self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "20xyyzzz"
 //        self.buildNumber.removeLast()
@@ -162,11 +174,10 @@ struct SideImageView: View {
                     Circle()
                         .foregroundColor(style == .venDark ? .init(r: 172, g: 73, b: 55) : .init(r: 1, g: 48, b: 120))
                         .blendMode(.normal)
-                    Image(style == .venDark ? "VenturaFluff" : "BlueFluff")
+                    Image(style == .venDark ? "VenturaFluffDark" : "BlueFluff")
                         .interpolation(.high)
                         .resizable()
                         .scaledToFit()
-                        .preferredColorScheme(.dark)
                         .cornerRadius(100)
                         .padding(8)
                 } else {
@@ -177,7 +188,6 @@ struct SideImageView: View {
                         .interpolation(.high)
                         .resizable()
                         .scaledToFit()
-                        .preferredColorScheme(.light)
                         .cornerRadius(100)
                         .padding(8)
                 }

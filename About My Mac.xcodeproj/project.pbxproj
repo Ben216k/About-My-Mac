@@ -11,6 +11,8 @@
 		76271504285453580021208A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76271503285453580021208A /* Preferences.swift */; };
 		764AE03528510B4100B58C10 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764AE03428510B4100B58C10 /* main.swift */; };
 		76785F8828B0466E00B31C2B /* ReallyLongListOfMacs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76785F8728B0466E00B31C2B /* ReallyLongListOfMacs.swift */; };
+		76785F8A28B05D9500B31C2B /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76785F8928B05D9500B31C2B /* StorageView.swift */; };
+		76785F8C28B05DE300B31C2B /* SuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76785F8B28B05DE300B31C2B /* SuperView.swift */; };
 		76916DD027E9779C000CB6DE /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76916DCF27E9779C000CB6DE /* VeliaUI */; };
 		76B14C2126F9758200E914CF /* About_My_MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B14C2026F9758200E914CF /* About_My_MacApp.swift */; };
 		76B14C2326F9758200E914CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B14C2226F9758200E914CF /* ContentView.swift */; };
@@ -25,6 +27,8 @@
 		76271503285453580021208A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		764AE03428510B4100B58C10 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76785F8728B0466E00B31C2B /* ReallyLongListOfMacs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallyLongListOfMacs.swift; sourceTree = "<group>"; };
+		76785F8928B05D9500B31C2B /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
+		76785F8B28B05DE300B31C2B /* SuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperView.swift; sourceTree = "<group>"; };
 		76A2AE3E2774EAE500FCCB39 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A2AE3F2774EAEA00FCCB39 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A2AE402774EAEF00FCCB39 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -79,7 +83,9 @@
 				76FD829C26FAA49900EA10B7 /* About My Mac.entitlements */,
 				76B14C2026F9758200E914CF /* About_My_MacApp.swift */,
 				76B14C2226F9758200E914CF /* ContentView.swift */,
+				76785F8B28B05DE300B31C2B /* SuperView.swift */,
 				7621D23828AEAB90009A2CD9 /* VIButtonMask.swift */,
+				76785F8928B05D9500B31C2B /* StorageView.swift */,
 				76785F8728B0466E00B31C2B /* ReallyLongListOfMacs.swift */,
 				76271503285453580021208A /* Preferences.swift */,
 				76B14C2426F9758400E914CF /* Assets.xcassets */,
@@ -188,6 +194,8 @@
 				76B14C4E26F977C200E914CF /* ShellOut.swift in Sources */,
 				76271504285453580021208A /* Preferences.swift in Sources */,
 				764AE03528510B4100B58C10 /* main.swift in Sources */,
+				76785F8A28B05D9500B31C2B /* StorageView.swift in Sources */,
+				76785F8C28B05DE300B31C2B /* SuperView.swift in Sources */,
 				7621D23928AEAB90009A2CD9 /* VIButtonMask.swift in Sources */,
 				76785F8828B0466E00B31C2B /* ReallyLongListOfMacs.swift in Sources */,
 				76B14C2126F9758200E914CF /* About_My_MacApp.swift in Sources */,
