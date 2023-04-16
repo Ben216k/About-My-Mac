@@ -245,25 +245,25 @@ func getMacName(infoString: String) -> String {
             return "MacBook Pro (Retina, 13-inch, Late 2016)"
         case "MacBookPro13,2":
             
-            return "MacBook Pro (Retina, 13-inch, Touch ID/Bar, Late 2016)"
+            return "MacBook Pro (Retina, 13-inch, Touch Bar, Late 2016)"
         case "MacBookPro14,1":
             
             return "MacBook Pro (Retina, 13-inch, Mid 2017)"
         case "MacBookPro14,2":
             
-            return "MacBook Pro (Retina, 13-inch, Touch ID/Bar, Mid 2017)"
+            return "MacBook Pro (Retina, 13-inch, Touch Bar, Mid 2017)"
         case "MacBookPro15,2":
             
-            return "MacBook Pro (Retina, 13-inch, Touch ID/Bar, Mid 2018)"
+            return "MacBook Pro (Retina, 13-inch, Touch Bar, Mid 2018)"
         case "MacBookPro15,4":
             
-            return "MacBook Pro (Retina, 13-inch, Touch ID/Bar, Mid 2019)"
+            return "MacBook Pro (Retina, 13-inch, Touch Bar, Mid 2019)"
         case "MacBookPro16,2","MacBookPro16,3":
             
-            return "MacBook Pro (Retina, 13-inch, Touch ID/Bar, Mid 2020)"
+            return "MacBook Pro (Retina, 13-inch, Touch Bar, Mid 2020)"
         case "MacBookPro16,4":
             
-            return "MacBook Pro (Retina, 16-inch, Touch ID/Bar, Mid 2019)"
+            return "MacBook Pro (Retina, 16-inch, Touch Bar, Mid 2019)"
         case "MacBookPro17,1":
             
             return "MacBook Pro (13-inch, M1, 2020)"
@@ -291,19 +291,19 @@ func getMacName(infoString: String) -> String {
             return "MacBook Pro (Retina, 15-inch, Mid 2015)"
         case "MacBookPro13,3":
             
-            return "MacBook Pro (Retina, 15-inch, Touch ID/Bar, Late 2016)"
+            return "MacBook Pro (Retina, 15-inch, Touch Bar, Late 2016)"
         case "MacBookPro14,3":
             
-            return "MacBook Pro (Retina, 15-inch, Touch ID/Bar, Late 2017)"
+            return "MacBook Pro (Retina, 15-inch, Touch Bar, Late 2017)"
         case "MacBookPro15,1":
             
-            return "MacBook Pro (Retina, 15-inch, Touch ID/Bar, 2018/2019)"
+            return "MacBook Pro (Retina, 15-inch, Touch Bar, 2018/2019)"
         case "MacBookPro15,3":
             
-            return "MacBook Pro (Retina Vega Graphics, 15-inch, Touch ID/Bar, 2018/2019)"
+            return "MacBook Pro (Retina, 15-inch, Touch Bar, 2018/2019)"
         case "MacBookPro16,1":
             
-            return "MacBook Pro (Retina, 16-inch, Touch ID/Bar, 2019)"
+            return "MacBook Pro (Retina, 16-inch, Touch Bar, 2019)"
         case "MacBookPro8,3":
             
             return "MacBook Pro (17-inch, Late 2011)"

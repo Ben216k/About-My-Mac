@@ -8,20 +8,20 @@
 import VeliaUI
 
 struct ContentView: View {
-    @State var systemVersion = "10.%.3"
+    @Binding var systemVersion: String
     let releaseTrack: String
-    @State var gpu = "Intel HD Graphics 400%"
-    @State var coolModel = "MacBook Pro (13-inch, M%d 2012)" as String?
-    @State var model = "MacBookPro%,2"
-    @State var cpu = "Intel(R) Core(TM) i5-3210M CPU"
-    @State var memory = "1%"
-    @State var buildNumber: String
-    @State var hovered: String?
+    @Binding var gpu: String
+    @Binding var coolModel: String?
+    @Binding var model: String
+    @Binding var cpu: String
+    @Binding var memory: String
+    @Binding var buildNumber: String
+    @Binding var hovered: String?
     @Binding var style: AMStyles
     @Binding var page: ViewPages
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
+        ZStack(alignment: .bottom) {
             BackGradientView(version: systemVersion, releaseTrack: releaseTrack, style: style)
             HStack {
                 SideImageView(releaseTrack: releaseTrack, version: systemVersion, style: style)
@@ -86,61 +86,25 @@ struct ContentView: View {
                     }.padding(.top, 10)
                 }.font(.subheadline)
                 .foregroundColor(.white)
-                .onAppear {
-                    self.style = AMStyles(rawValue: UserDefaults.standard.string(forKey: "Style") ?? "BigSur1") ?? .bigSur1
-                    systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
-                    sysVersion = systemVersion
-                    print("Detected System Version: \(systemVersion)")
-                    DispatchQueue.global(qos: .background).async {
-                        self.model = (try? call("sysctl -n hw.model")) ?? "UnknownX,Y"
-                        cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
-                        cpu = String(cpu.split(separator: "@")[0])
-                        print("Detected CPU: \(cpu)")
-                        gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
-                        if gpu.count <= 2 {
-                            gpu = "No GPU Detected.."
-                        }
-                        gpu.removeLast(2)
-                        print("Detected GPU: \(gpu)")
-                        memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024))\"")) ?? "-100"
-                        print("Detected Memory Amount: \(memory)")
-                        var newModel = getMacName(infoString: self.model) as String?
-                        if newModel == "Mac" {
-                            guard let newNewModel = try? call("curl -s 'https://support-sp.apple.com/sp/product?cc='$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}' | cut -c 9-) | sed 's|.*<configCode>\\(.*\\)</configCode>.*|\\1|'") else {
-                                coolModel = nil
-                                return
-                            }
-                            if newNewModel.hasPrefix("<") {
-                                newModel = nil
-                            } else {
-                                newModel = newNewModel
-                            }
-                        }
-                        coolModel = newModel
-                    }
-                }
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
-            Button {
-                withAnimation {
-                    page = .storage
-                }
-            } label: {
-                Image(systemName: "chevron.right.square.fill")
-                    .font(.title2.bold())
-                    .foregroundColor(.white)
-                    .padding(15)
-            }.buttonStyle(.borderless)
+            HStack(alignment: .bottom) {
+//                (Text("About My Mac ").font(.system(size: 12)).bold() + Text("v\(AppInfo.version) (\(AppInfo.build))").font(.system(size: 10)).fontWeight(.light))
+//                    .foregroundColor(.white)
+//                    .padding(15)
+//                    .padding(.horizontal, 2.5)
+                Spacer()
+                Button {
+                    withAnimation {
+                        page = .storage
+                    }
+                } label: {
+                    Image(systemName: "chevron.right.square.fill")
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
+                        .padding(15)
+                }.buttonStyle(.borderless)
+            }
         }.ignoresSafeArea()
-    }
-    
-    init(style: Binding<AMStyles>, page: Binding<ViewPages>) {
-        print("Helllooo!")
-        self._style = style
-        self._page = page
-        self.releaseTrack = "Release"
-        self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "20xyyzzz"
-//        self.buildNumber.removeLast()
-        print("Detected macOS Build Number: \(buildNumber)")
     }
 }
 
