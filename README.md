@@ -9,11 +9,11 @@ Has 10 different styles (3 per each, plus extra for Big Sur).
 
 ## Screenshots
 
-![Ventura Dark]()
+![Ventura Dark](https://github.com/Ben216k/About-My-Mac/raw/main/Images/Ventura.png)
 
-![Monterey Dark]()
+![Monterey Dark](https://github.com/Ben216k/About-My-Mac/raw/main/Images/Monterey.png)
 
-![Big Sur Original]()
+![Big Sur Original](https://github.com/Ben216k/About-My-Mac/raw/main/Images/BigSur.png)
 
 ## Credits
 
