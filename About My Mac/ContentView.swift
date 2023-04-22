@@ -93,16 +93,16 @@ struct ContentView: View {
 //                    .padding(15)
 //                    .padding(.horizontal, 2.5)
                 Spacer()
-                Button {
-                    withAnimation {
-                        page = .storage
-                    }
-                } label: {
-                    Image(systemName: "chevron.right.square.fill")
-                        .font(.title2.bold())
-                        .foregroundColor(.white)
-                        .padding(15)
-                }.buttonStyle(.borderless)
+//                Button {
+//                    withAnimation {
+//                        page = .storage
+//                    }
+//                } label: {
+//                    Image(systemName: "chevron.right.square.fill")
+//                        .font(.title2.bold())
+//                        .foregroundColor(.white)
+//                        .padding(15)
+//                }.buttonStyle(.borderless)
             }
         }.ignoresSafeArea()
     }

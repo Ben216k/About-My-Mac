@@ -22,7 +22,7 @@ struct PreferencesView : View {
                     VIButton(id: "GITHUB", h: $hovered) {
                         Image("GitHubMark")
                     } onClick: {
-//                        NSWorkspace.shared.open("https://github.com/Ben216k/Patched-Sur")
+                        NSWorkspace.shared.open("https://github.com/Ben216k/About-My-Mac")
                     }
                 }.padding(.bottom, 5)
                 

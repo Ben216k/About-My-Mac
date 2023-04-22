@@ -29,7 +29,7 @@ struct SuperView : View {
                 .onAppear {
                     self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "(20xyyzzz)"
                     self.style = AMStyles(rawValue: UserDefaults.standard.string(forKey: "Style") ?? "BigSur1") ?? .bigSur1
-                    systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
+                    systemVersion = (try? call("sw_vers -productVersion")) ?? "12.xx.yy"
                     sysVersion = systemVersion
                     print("Detected System Version: \(systemVersion)")
                     DispatchQueue.global(qos: .background).async {
