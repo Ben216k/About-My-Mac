@@ -52,7 +52,7 @@ struct PreferencesView : View {
                         
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .pink, gradient: [.init("P1NK"), .init("P2NK")])
                         
-                    } else {
+                    } else if sysVersion.hasPrefix("13") {
                         
                         // MARK: Ventura Styles
                         
@@ -61,6 +61,15 @@ struct PreferencesView : View {
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .venDark, gradient: [.init("13DA"), .init("13DB")])
                         
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .venBlue, gradient: [.init("13D1"), .init("13D2")])
+                        
+                    } else {
+                        
+                        // MARK: Sonoma Styles
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .sonLight, gradient: [.init("14L1"), .init("14L2")])
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .sonDark, gradient: [.init("14D1"), .init("14D2")])
+                        
                         
                     }
 
@@ -139,4 +148,6 @@ enum AMStyles: String {
     case venLight = "VenturaL"
     case venDark = "VenturaD"
     case venBlue = "VenturaB"
+    case sonLight = "SonomaL"
+    case sonDark = "SonomaD"
 }

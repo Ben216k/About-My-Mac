@@ -26,7 +26,9 @@ struct ContentView: View {
             HStack {
                 SideImageView(releaseTrack: releaseTrack, version: systemVersion, style: style)
                 VStack(alignment: .leading, spacing: 2) {
-                    if systemVersion.hasPrefix("13") {
+                    if systemVersion.hasPrefix("14") {
+                        Text("macOS ").font(.largeTitle).bold() + Text("Sonoma").font(.largeTitle)
+                    } else if systemVersion.hasPrefix("13") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Ventura").font(.largeTitle)
                     } else if systemVersion.hasPrefix("12") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Monterey").font(.largeTitle)
@@ -132,7 +134,20 @@ struct SideImageView: View {
     var style: AMStyles
     
     var body: some View {
-        if version.hasPrefix("13")  {
+        if version.hasPrefix("14")  {
+            ZStack {
+                Circle()
+                    .foregroundColor(style == .sonDark ? .init("14DR") : .init("14LR"))
+                    .blendMode(.normal)
+                Image(style == .sonDark ? "SonomaDark" : "SonomaLight")
+                    .interpolation(.high)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(100)
+                    .padding(8)
+            }.frame(width: scale, height: scale)
+                .padding()
+        } else if version.hasPrefix("13")  {
             ZStack {
                 if style == .venDark || style == .venBlue {
                     Circle()
@@ -237,7 +252,31 @@ struct BackGradientView: View {
     
     var body: some View {
         Group {
-            if version.hasPrefix("13") {
+            if version.hasPrefix("14") {
+                ZStack {
+                    if style == .sonDark {
+                        LinearGradient(gradient: .init(colors: [.init("14D1"), .init("14D2")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
+                                }
+                            }.blendMode(.normal)
+                    } else {
+                        LinearGradient(gradient: .init(colors: [.init("14L1"), .init("14L2")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
+                                }
+                            }.blendMode(.normal)
+                    }
+                }
+            } else if version.hasPrefix("13") {
                 ZStack {
                     if style == .venDark {
                         LinearGradient(gradient: .init(colors: [.init("13DA"), .init("13DB")]), startPoint: startPoint, endPoint: endPoint)

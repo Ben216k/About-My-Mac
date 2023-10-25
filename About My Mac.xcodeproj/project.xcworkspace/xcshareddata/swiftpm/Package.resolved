@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "veliaui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Ben216k/VeliaUI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3bc9d1c11e5d456a086cc16be66c915d33a5a948"
+      }
+    }
+  ],
+  "version" : 2
+}
