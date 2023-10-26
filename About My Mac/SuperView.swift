@@ -28,6 +28,9 @@ struct SuperView : View {
             Text(" ")
                 .onAppear {
                     self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "(20xyyzzz)"
+                    if self.buildNumber.hasPrefix("(") { self.buildNumber.removeFirst() }
+                    if self.buildNumber.hasSuffix(")") { self.buildNumber.removeLast() }
+                    print("Build number detected \(self.buildNumber) (\(self.buildNumber.count))")
                     self.style = AMStyles(rawValue: UserDefaults.standard.string(forKey: "Style") ?? "BigSur1") ?? .bigSur1
                     systemVersion = (try? call("sw_vers -productVersion")) ?? "12.xx.yy"
                     sysVersion = systemVersion
