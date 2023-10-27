@@ -70,6 +70,10 @@ struct PreferencesView : View {
                         
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .sonDark, gradient: [.init("14D1"), .init("14D2")])
                         
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .sonPink, gradient: [.init("14P1"), .init("14P2")])
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .sonBlue, gradient: [.init("14B1"), .init("14B2")])
+                        
                         
                     }
 
@@ -150,4 +154,6 @@ enum AMStyles: String {
     case venBlue = "VenturaB"
     case sonLight = "SonomaL"
     case sonDark = "SonomaD"
+    case sonPink = "SonomaPink"
+    case sonBlue = "SonomaBlue"
 }

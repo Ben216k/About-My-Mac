@@ -135,18 +135,33 @@ struct SideImageView: View {
     
     var body: some View {
         if version.hasPrefix("14")  {
-            ZStack {
-                Circle()
-                    .foregroundColor(style == .sonDark ? .init("14DR") : .init("14LR"))
-                    .blendMode(.normal)
-                Image(style == .sonDark ? "SonomaDark" : "SonomaLight")
-                    .interpolation(.high)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(100)
-                    .padding(8)
-            }.frame(width: scale, height: scale)
-                .padding()
+            if style == .sonPink || style == .sonBlue {
+                ZStack {
+                    Circle()
+                        .foregroundColor(style == .sonBlue ? .init("14BR") : .init("14PR"))
+                        .blendMode(.normal)
+                    Image(style == .sonBlue ? "SonomaBlue" : "PinkSonoma")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(100)
+                        .padding(8)
+                }.frame(width: scale, height: scale)
+                    .padding()
+            } else {
+                ZStack {
+                    Circle()
+                        .foregroundColor(style == .sonDark ? .init("14DR") : .init("14LR"))
+                        .blendMode(.normal)
+                    Image(style == .sonDark ? "SonomaDark" : "SonomaLight")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(100)
+                        .padding(8)
+                }.frame(width: scale, height: scale)
+                    .padding()
+            }
         } else if version.hasPrefix("13")  {
             ZStack {
                 if style == .venDark || style == .venBlue {
@@ -256,6 +271,26 @@ struct BackGradientView: View {
                 ZStack {
                     if style == .sonDark {
                         LinearGradient(gradient: .init(colors: [.init("14D1"), .init("14D2")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
+                                }
+                            }.blendMode(.normal)
+                    } else if style == .sonPink {
+                        LinearGradient(gradient: .init(colors: [.init("14P1"), .init("14P2")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
+//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
+                                }
+                            }.blendMode(.normal)
+                    } else if style == .sonBlue {
+                        LinearGradient(gradient: .init(colors: [.init("14B1"), .init("14B2")]), startPoint: startPoint, endPoint: endPoint)
                             .onAppear {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                     self.endPoint = UnitPoint(x: 1.5, y: 1)

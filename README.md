@@ -5,7 +5,7 @@ A cooler recreation of the About *This* Mac screen from pre-Ventura macOS, modif
 Yep... that's it. I plan on giving it more capabilities similar to the original, but for now it's just the quick information with a nice animated gradient. 
 
 Supports: Big Sur, Monterey and Ventura.
-Has 12 different styles (3 per each, plus extra for Big Sur, except only two for Sonoma for now).
+Has 14 different styles (3 per each, plus one extra for Big Sur and Sonoma).
 
 ## Screenshots
 
