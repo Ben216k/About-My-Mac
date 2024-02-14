@@ -44,41 +44,41 @@ func getMacName(infoString: String) -> String {
             
             return "iMac 21.5-Inch (Mid 2011)"
         case "iMac13,1":
-            
             return "iMac 21.5-Inch (Mid 2012/Early 2013)"
-        case "iMac14,1","iMac14,3":
             
+        case "iMac14,1","iMac14,3":
             return "iMac 21.5-Inch (Late 2013)"
+            
         case "iMac14,4":
             
             return "iMac 21.5-Inch (Mid 2014)"
         case "iMac16,1","iMac16,2":
-            
             return "iMac 21.5-Inch (Late 2015)"
+            
         case "iMac18,1":
-            
             return "iMac 21.5-Inch (2017)"
+            
         case "iMac18,2":
-            
             return "iMac 21.5-Inch (Retina 4K, 2017)"
+            
         case "iMac19,3":
-            
             return "iMac 21.5-Inch (Retina 4K, 2019)"
+            
         case "iMac11,1":
-            
             return "iMac 27-Inch (Late 2009)"
+            
         case "iMac11,3":
-            
             return "iMac 27-Inch (Mid 2010)"
+            
         case "iMac12,2":
-            
             return "iMac 27-inch (Mid 2011)"
+            
         case "iMac13,2":
-            
             return "iMac 27-inch (Mid 2012)"
-        case "iMac14,2":
             
+        case "iMac14,2":
             return "iMac 27-inch (Late 2013)"
+            
         case "iMac15,1":
             
             return "iMac 27-inch (Retina 5K, Late 2014)"
@@ -296,20 +296,19 @@ func getMacName(infoString: String) -> String {
             
             return "MacBook Pro (Retina, 15-inch, Touch Bar, Late 2017)"
         case "MacBookPro15,1":
-            
             return "MacBook Pro (Retina, 15-inch, Touch Bar, 2018/2019)"
+            
         case "MacBookPro15,3":
-            
             return "MacBook Pro (Retina, 15-inch, Touch Bar, 2018/2019)"
+            
         case "MacBookPro16,1":
-            
             return "MacBook Pro (Retina, 16-inch, Touch Bar, 2019)"
-        case "MacBookPro8,3":
             
+        case "MacBookPro8,3":
             return "MacBook Pro (17-inch, Late 2011)"
             
         case "Mac14,2":
-            return "MacBook Air (13-inch, M2, 2022)"
+            return "MacBook Air (M2, 2022)"
             
         case "Mac14,7":
             return "MacBook Pro (13-inch, M2, 2022)"
@@ -319,6 +318,25 @@ func getMacName(infoString: String) -> String {
             
         case "MacBookPro18,3", "MacBookPro18,4":
             return "MacBook Pro (16-inch, 2021)"
+            
+        case "Mac14,8":
+            return "Mac Pro (2023)"
+            
+        case "Mac14,15":
+            return "MacBook Air (15-inch, M2, 2023)"
+            
+        case "Mac14,5", "Mac14,9":
+            return "MacBook Pro (14-inch, 2023)"
+            
+        case "Mac14,6", "Mac14,10":
+            return "MacBook Pro (16-inch, 2023)"
+            
+        case "Mac15,3", "Mac15,6", "Mac15,8", "Mac15,10":
+            return "MacBook Pro (14-inch, Nov 2023)"
+            
+        case "Mac15,7", "Mac15,9", "Mac15,11":
+            return "MacBook Pro (16-inch, Nov 2023)"
+            
             
         default:
             return "Mac"
