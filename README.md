@@ -5,9 +5,13 @@ A cooler recreation of the About *This* Mac screen from pre-Ventura macOS, modif
 Yep... that's it. I plan on giving it more capabilities similar to the original, but for now it's just the quick information with a nice animated gradient. 
 
 Supports: Big Sur, Monterey and Ventura.
-Has 14 different styles (3 per each, plus one extra for Big Sur and Sonoma).
+Has 16 different styles (split between OS versions unevenly).
 
 ## Screenshots
+
+![Sequoia Light](https://github.com/Ben216k/About-My-Mac/raw/main/Images/Sequoia.png)
+
+![Sequoia Blurred](https://github.com/Ben216k/About-My-Mac/raw/main/Images/SequoiaBlur.png)
 
 ![Sonoma Light](https://github.com/Ben216k/About-My-Mac/raw/main/Images/Sonoma.png)
 
