@@ -19,14 +19,28 @@ struct ContentView: View {
     @Binding var hovered: String?
     @Binding var style: AMStyles
     @Binding var page: ViewPages
+    @State var helpME = 0
+    @Binding var backgroundBlur: Bool
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            BackGradientView(version: systemVersion, releaseTrack: releaseTrack, style: style)
+            if backgroundBlur {
+                VisualEffectView(material: .hudWindow, blendingMode: .behindWindow)
+            } else {
+                BackGradientView(version: systemVersion, releaseTrack: releaseTrack, style: style)
+            }
             HStack {
                 SideImageView(releaseTrack: releaseTrack, version: systemVersion, style: style)
                 VStack(alignment: .leading, spacing: 2) {
-                    if systemVersion.hasPrefix("14") {
+                    if systemVersion.hasPrefix("15") {
+                        (Text("macOS ").font(.largeTitle).bold() + Text("Sequoia").font(.largeTitle))
+                            .onTapGesture {
+                                helpME += 1
+                                if helpME == 10 {
+                                    UserDefaults.standard.set(true, forKey: "TriedToFindSequoia")
+                                }
+                            }
+                    } else if systemVersion.hasPrefix("14") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Sonoma").font(.largeTitle)
                     } else if systemVersion.hasPrefix("13") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Ventura").font(.largeTitle)
@@ -69,14 +83,14 @@ struct ContentView: View {
                     HStack {
                         VIButtonBlend(id: "HOME", h: $hovered) {
                             Text(.init("PO-AMM-REPORT"))
-                                .foregroundColor(.white)
+                                .foregroundColor(style == .sat ? .black : .white)
                         } onClick: {
                             _ = try? call("open -a 'System Information'")
                         }.inPad()
                             .btColor(systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : (systemVersion.hasPrefix("13") ? .init(r: 255, g: 187, b: 0).opacity(0.8) : .init(r: 0, g: 220, b: 239)))
                         VIButtonBlend(id: "SOFTWARE", h: $hovered) {
                             Text(.init("PO-AMM-UPDATE"))
-                                .foregroundColor(.white)
+                                .foregroundColor(style == .sat ? .black : .white)
                         } onClick: {
                             if (try? call("[ -d /Applications/Patched\\ Sur.app ]")) != nil {
                                 NSWorkspace.shared.open(URL(string: "patched-sur://run-updates")!)
@@ -87,7 +101,7 @@ struct ContentView: View {
                             .btColor(systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : (systemVersion.hasPrefix("13") ? .init(r: 255, g: 187, b: 0).opacity(0.8) : .init(r: 0, g: 220, b: 239)))
                     }.padding(.top, 10)
                 }.font(.subheadline)
-                .foregroundColor(.white)
+                .foregroundColor(style == .sat ? .black : .white)
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
             HStack(alignment: .bottom) {
 //                (Text("About My Mac ").font(.system(size: 12)).bold() + Text("v\(AppInfo.version) (\(AppInfo.build))").font(.system(size: 10)).fontWeight(.light))
@@ -132,9 +146,37 @@ struct SideImageView: View {
     let releaseTrack: String
     let scale: CGFloat
     var style: AMStyles
+    @State var hoveredCircle = false
+    @State var checkpoint = 0
     
     var body: some View {
-        if version.hasPrefix("14")  {
+        if version.hasPrefix("15")  {
+            ZStack {
+                if style == .sat {
+                    Circle()
+                        .foregroundColor(.init("15DRUR"))
+                        .blendMode(.normal)
+                        .blur(radius: 0.1)
+                    Image("SequoiaAdventureTeam")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(100)
+                        .padding(8)
+                } else{
+                    Circle()
+                        .foregroundColor(style == .seqDark ? .init("15DR") : .init("15LR"))
+                        .blendMode(.normal)
+                    Image(style == .seqDark ? "SequoiaDark" : "SequoiaLight")
+                        .interpolation(.high)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(100)
+                        .padding(8)
+                }
+            }.frame(width: scale, height: scale)
+                .padding()
+        } else if version.hasPrefix("14")  {
             if style == .sonPink || style == .sonBlue {
                 ZStack {
                     Circle()
@@ -267,7 +309,35 @@ struct BackGradientView: View {
     
     var body: some View {
         Group {
-            if version.hasPrefix("14") {
+            if version.hasPrefix("15") {
+                ZStack {
+                    if style == .seqDark {
+                        LinearGradient(gradient: .init(colors: [.init("15D1"), .init("15D2")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 0.5)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+                                }
+                            }.blendMode(.normal)
+                    } else if style == .sat {
+                        LinearGradient(gradient: .init(colors: [.init("15DRU1"), .init("15DRU2"), .init("15DRU3")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 0.5)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+                                }
+                            }.blendMode(.normal)
+                    } else {
+                        LinearGradient(gradient: .init(colors: [.init("15L1"), .init("15L2")]), startPoint: startPoint, endPoint: endPoint)
+                            .onAppear {
+                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
+                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
+                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
+                                }
+                            }.blendMode(.normal)
+                    }
+                }
+            } else if version.hasPrefix("14") {
                 ZStack {
                     if style == .sonDark {
                         LinearGradient(gradient: .init(colors: [.init("14D1"), .init("14D2")]), startPoint: startPoint, endPoint: endPoint)

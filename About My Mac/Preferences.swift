@@ -11,6 +11,8 @@ struct PreferencesView : View {
     
     @State var hovered: String?
     @Binding var selectedStyle: AMStyles
+    @State var triedToFindSequoia = false
+    @Binding var backgroundBlur: Bool
     
     var body: some View {
         ScrollView {
@@ -28,6 +30,9 @@ struct PreferencesView : View {
                 
                 Text("Style")
                     .font(.headline.weight(.semibold))
+                    .onAppear {
+                        triedToFindSequoia = UserDefaults.standard.bool(forKey: "TriedToFindSequoia")
+                    }
                 HStack(spacing: 0) {
                     
                     // MARK: Big Sur Styles
@@ -62,7 +67,7 @@ struct PreferencesView : View {
                         
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .venBlue, gradient: [.init("13D1"), .init("13D2")])
                         
-                    } else {
+                    } else if sysVersion.hasPrefix("14") {
                         
                         // MARK: Sonoma Styles
                         
@@ -74,11 +79,30 @@ struct PreferencesView : View {
                         
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .sonBlue, gradient: [.init("14B1"), .init("14B2")])
                         
+                    } else {
+                        
+                        // MARK: Sequoia Styles
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .seqLight, gradient: [.init("15L1"), .init("15L2")])
+                        
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .seqDark, gradient: [.init("15D1"), .init("15D2")])
+                        
+                        if triedToFindSequoia {
+                            SelectStyleButton(selectedStyle: $selectedStyle, style: .sat, gradient: [.white, .black])
+                        }
+                        
+                    
                         
                     }
 
                 }.padding(.top, -5)
                 .padding(.leading, -4)
+                
+                Toggle("Blurred Background", isOn: $backgroundBlur)
+                    .onChange(of: backgroundBlur) { _ in
+                        UserDefaults.standard.set(backgroundBlur, forKey: "BlurBG")
+                    }
+                
                 
                 Rectangle().frame(height: 0)
                 
@@ -86,7 +110,11 @@ struct PreferencesView : View {
                     .font(.headline.weight(.semibold))
                     .padding(.bottom, 1)
                 
-                Text("- JohnSundell's ShellOut Library (github.com/JohnSundell/ShellOut)\n- The beta testers and feature suggesters on the Ursinia Projects discord. (discord.gg/2DxVn4HDX6)\n - 0xCUBE's and MDNich's contributions from their project (github.com/0xCUB3/About-This-Hack)")
+                if #available(macOS 13, *) {
+                    Text("- [JohnSundell's ShellOut Library](github.com/JohnSundell/ShellOut)\n- The beta testers and feature suggesters on the [Ursinia Projects discord](discord.gg/2DxVn4HDX6). \n - 0xCUBE's and MDNich's contributions from their project, [About This Hack](github.com/0xCUB3/About-This-Hack).")
+                } else {
+                    Text("- JohnSundell's ShellOut Library (github.com/JohnSundell/ShellOut)\n- The beta testers and feature suggesters on the Ursinia Projects discord. (discord.gg/2DxVn4HDX6)\n - 0xCUBE's and MDNich's contributions from their project (github.com/0xCUB3/About-This-Hack)")
+                }
                 
             }.padding(30)
         }
@@ -156,4 +184,7 @@ enum AMStyles: String {
     case sonDark = "SonomaD"
     case sonPink = "SonomaPink"
     case sonBlue = "SonomaBlue"
+    case seqLight = "SequoiaLight"
+    case seqDark = "SequoiaDark"
+    case sat = "SequoiaAdventureTeam"
 }

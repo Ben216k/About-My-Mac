@@ -22,11 +22,13 @@ struct SuperView : View {
     @State var buildNumber = "20xxyyzz"
     @State var hovered: String?
     @State var showTheBar = false
+    @Binding var backgroundBlur: Bool
     
     var body: some View {
         ZStack {
             Text(" ")
                 .onAppear {
+                    self.backgroundBlur = UserDefaults.standard.bool(forKey: "BlurBG")
                     self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "(20xyyzzz)"
                     if self.buildNumber.hasPrefix("(") { self.buildNumber.removeFirst() }
                     if self.buildNumber.hasSuffix(")") { self.buildNumber.removeLast() }
@@ -69,7 +71,7 @@ struct SuperView : View {
                 }
             switch page {
             case .main:
-                ContentView(systemVersion: $systemVersion, releaseTrack: releaseTrack, gpu: $gpu, coolModel: $coolModel, model: $model, cpu: $cpu, memory: $memory, buildNumber: $buildNumber, hovered: $hovered, style: $style, page: $page)
+                ContentView(systemVersion: $systemVersion, releaseTrack: releaseTrack, gpu: $gpu, coolModel: $coolModel, model: $model, cpu: $cpu, memory: $memory, buildNumber: $buildNumber, hovered: $hovered, style: $style, page: $page, backgroundBlur: $backgroundBlur)
                     .transition(.move(edge: .leading))
             case .storage:
                 StorageView()
@@ -130,8 +132,9 @@ struct SuperView : View {
         }
     }
     
-    init(style: Binding<AMStyles>) {
+    init(style: Binding<AMStyles>, backgroundBlur: Binding<Bool>) {
         print("Helllooo!")
+        self._backgroundBlur = backgroundBlur
         self._style = style
         self.releaseTrack = "Release"
 //        self.buildNumber.removeLast()

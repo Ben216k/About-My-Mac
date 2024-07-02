@@ -10,10 +10,11 @@ import SwiftUI
 struct About_My_MacApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var style = AMStyles.bigSur1
+    @State var backgroundBlur = false
     
     var body: some Scene {
         WindowGroup {
-            SuperView(style: $style)
+            SuperView(style: $style, backgroundBlur: $backgroundBlur)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
         }.windowStyle(HiddenTitleBarWindowStyle())
 //        .commands(content: {
@@ -32,7 +33,7 @@ struct About_My_MacApp: App {
 //            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
 //        })
         Settings {
-            PreferencesView(selectedStyle: $style)
+            PreferencesView(selectedStyle: $style, backgroundBlur: $backgroundBlur)
                 .frame(minWidth: 400, maxWidth: 400, minHeight: 335, maxHeight: 335)
         }.windowStyle(HiddenTitleBarWindowStyle())
     }
@@ -42,10 +43,11 @@ struct About_My_MacApp: App {
 struct About_My_MacApp13: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var style = AMStyles.bigSur1
+    @State var backgroundBlur = false
     
     var body: some Scene {
         WindowGroup {
-            SuperView(style: $style)
+            SuperView(style: $style, backgroundBlur: $backgroundBlur)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 355, maxHeight: 355)
         }.windowStyle(HiddenTitleBarWindowStyle())
             .windowResizability(WindowResizability.contentSize)
@@ -65,7 +67,7 @@ struct About_My_MacApp13: App {
 //            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
 //        })
         Settings {
-            PreferencesView(selectedStyle: $style)
+            PreferencesView(selectedStyle: $style, backgroundBlur: $backgroundBlur)
                 .frame(minWidth: 400, maxWidth: 400, minHeight: 320, maxHeight: 320)
         }.windowStyle(HiddenTitleBarWindowStyle())
             .windowResizability(WindowResizability.contentSize)
