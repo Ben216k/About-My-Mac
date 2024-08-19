@@ -106,3 +106,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 }
+
+extension String {
+    /// Returns `true` if the string ends with a letter, otherwise `false`.
+    var endsWithLetter: Bool {
+        guard let lastCharacter = self.last else {
+            return false
+        }
+        return lastCharacter.isLetter
+    }
+}

@@ -49,7 +49,7 @@ struct ContentView: View {
                     } else {
                         Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
                     }
-                    Text("\(NSLocalizedString("PO-AMM-VERSION", comment: "PO-AMM-VERSION")) \(systemVersion)\(buildNumber.count < 8 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
+                    Text("\(NSLocalizedString("PO-AMM-VERSION", comment: "PO-AMM-VERSION")) \(systemVersion)\(!buildNumber.endsWithLetter ? "" : " Beta") (\(buildNumber))").font(.subheadline)
                         .redacted(reason: systemVersion.contains("%") ? .placeholder : .init())
                     Rectangle().frame(height: 10).opacity(0).fixedSize()
                     if let coolModel = coolModel {

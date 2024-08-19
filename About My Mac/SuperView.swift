@@ -30,6 +30,7 @@ struct SuperView : View {
                 .onAppear {
                     self.backgroundBlur = UserDefaults.standard.bool(forKey: "BlurBG")
                     self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "(20xyyzzz)"
+                    // print buildNumber and background blur configuration
                     if self.buildNumber.hasPrefix("(") { self.buildNumber.removeFirst() }
                     if self.buildNumber.hasSuffix(")") { self.buildNumber.removeLast() }
                     print("Build number detected \(self.buildNumber) (\(self.buildNumber.count))")
@@ -63,6 +64,7 @@ struct SuperView : View {
                             if newNewModel.hasPrefix("<") {
                                 newModel = nil
                             } else {
+                                print("If you're reading this, you might want to report this as a bug and post it on the GitHub repo.")
                                 newModel = newNewModel
                             }
                         }
