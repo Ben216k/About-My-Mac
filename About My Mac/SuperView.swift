@@ -30,12 +30,14 @@ struct SuperView : View {
                 .onAppear {
                     self.backgroundBlur = UserDefaults.standard.bool(forKey: "BlurBG")
                     self.buildNumber = (try? call("system_profiler SPSoftwareDataType | grep 'System Version' | cut -c 29- | awk '{print $2}'")) ?? "(20xyyzzz)"
+                    print("HELLO \(self.buildNumber)")
                     // print buildNumber and background blur configuration
                     if self.buildNumber.hasPrefix("(") { self.buildNumber.removeFirst() }
                     if self.buildNumber.hasSuffix(")") { self.buildNumber.removeLast() }
                     print("Build number detected \(self.buildNumber) (\(self.buildNumber.count))")
                     self.style = AMStyles(rawValue: UserDefaults.standard.string(forKey: "Style") ?? "BigSur1") ?? .bigSur1
                     systemVersion = (try? call("sw_vers -productVersion")) ?? "12.xx.yy"
+//                    systemVersion = "15.2"
                     sysVersion = systemVersion
                     print("Detected System Version: \(systemVersion)")
                     DispatchQueue.global(qos: .background).async {
@@ -140,7 +142,7 @@ struct SuperView : View {
         self._style = style
         self.releaseTrack = "Release"
 //        self.buildNumber.removeLast()
-        print("Detected macOS Build Number: \(buildNumber)")
+//        print("Detected macOS Build Number: \(buildNumber)")
     }
 }
 

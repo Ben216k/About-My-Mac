@@ -17,21 +17,6 @@ struct About_My_MacApp: App {
             SuperView(style: $style, backgroundBlur: $backgroundBlur)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
         }.windowStyle(HiddenTitleBarWindowStyle())
-//        .commands(content: {
-//            Group {
-//                CommandGroup(replacing: .newItem) {}
-//                CommandGroup(replacing: CommandGroupPlacement.importExport) {}
-//                CommandGroup(replacing: CommandGroupPlacement.appVisibility) {}
-//                CommandGroup(replacing: CommandGroupPlacement.pasteboard) {}
-//                CommandGroup(replacing: CommandGroupPlacement.undoRedo) {}
-//                CommandGroup(replacing: CommandGroupPlacement.textEditing) {}
-//                CommandGroup(replacing: CommandGroupPlacement.windowArrangement) {}
-//                CommandGroup(replacing: CommandGroupPlacement.windowList) {}
-//                CommandGroup(replacing: CommandGroupPlacement.saveItem) {}
-//                CommandGroup(replacing: CommandGroupPlacement.systemServices) {}
-//            }
-//            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
-//        })
         Settings {
             PreferencesView(selectedStyle: $style, backgroundBlur: $backgroundBlur)
                 .frame(minWidth: 400, maxWidth: 400, minHeight: 335, maxHeight: 335)
@@ -51,21 +36,6 @@ struct About_My_MacApp13: App {
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 355, maxHeight: 355)
         }.windowStyle(HiddenTitleBarWindowStyle())
             .windowResizability(WindowResizability.contentSize)
-//        .commands(content: {
-//            Group {
-//                CommandGroup(replacing: .newItem) {}
-//                CommandGroup(replacing: CommandGroupPlacement.importExport) {}
-//                CommandGroup(replacing: CommandGroupPlacement.appVisibility) {}
-//                CommandGroup(replacing: CommandGroupPlacement.pasteboard) {}
-//                CommandGroup(replacing: CommandGroupPlacement.undoRedo) {}
-//                CommandGroup(replacing: CommandGroupPlacement.textEditing) {}
-//                CommandGroup(replacing: CommandGroupPlacement.windowArrangement) {}
-//                CommandGroup(replacing: CommandGroupPlacement.windowList) {}
-//                CommandGroup(replacing: CommandGroupPlacement.saveItem) {}
-//                CommandGroup(replacing: CommandGroupPlacement.systemServices) {}
-//            }
-//            CommandGroup(replacing: CommandGroupPlacement.appInfo) {}
-//        })
         Settings {
             PreferencesView(selectedStyle: $style, backgroundBlur: $backgroundBlur)
                 .frame(minWidth: 400, maxWidth: 400, minHeight: 320, maxHeight: 320)
