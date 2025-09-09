@@ -9,7 +9,7 @@ Has 22 different styles (split between OS versions unevenly).
 
 ## Gallery
 
-![The Gallery](https://github.com/Ben216k/About-My-Mac/raw/main/Images/AllOfThemSept2025.png)
+![The Gallery](https://github.com/Ben216k/About-My-Mac/raw/main/Images/AllOfThemSept2025.jpg)
 
 ## Credits
 
