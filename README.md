@@ -14,5 +14,5 @@ Has 22 different styles (split between OS versions unevenly).
 ## Credits
 
 - JohnSundell's [ShellOut](https://github.com/JohnSundell/ShellOut) library.
-- The beta testers and feature suggesters on the [Ursinia Projects discord](https://discord.gg/2DxVn4HDX6).
+- The beta testers and feature suggesters on the [216k Labs discord](https://discord.gg/2DxVn4HDX6).
 - 0xCUBE's and MDNich's contributions from their project, [About This Hack](https://github.com/0xCUB3/About-This-Hack).
