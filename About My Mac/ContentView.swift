@@ -85,14 +85,14 @@ struct ContentView: View {
                     HStack {
                         VIButtonBlend(id: "HOME", h: $hovered) {
                             Text(.init("PO-AMM-REPORT"))
-                                .foregroundColor(style == .sat || style == .tahNews ? .black : .white)
+                                .foregroundColor(style == .sat || style == .tahNews || style == .tahNaturalDay ? .black : .white)
                         } onClick: {
                             _ = try? call("open -a 'System Information'")
                         }.inPad()
                             .btColor(systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : (systemVersion.hasPrefix("13") ? .init(r: 255, g: 187, b: 0).opacity(0.8) : .init(r: 0, g: 220, b: 239)))
                         VIButtonBlend(id: "SOFTWARE", h: $hovered) {
                             Text(.init("PO-AMM-UPDATE"))
-                                .foregroundColor(style == .sat || style == .tahNews ? .black : .white)
+                                .foregroundColor(style == .sat || style == .tahNews || style == .tahNaturalDay ? .black : .white)
                         } onClick: {
                             if (try? call("[ -d /Applications/Patched\\ Sur.app ]")) != nil {
                                 NSWorkspace.shared.open(URL(string: "patched-sur://run-updates")!)
@@ -103,7 +103,7 @@ struct ContentView: View {
                             .btColor(systemVersion.hasPrefix("12") ? .init(r: 196, g: 0, b: 255) : (systemVersion.hasPrefix("13") ? .init(r: 255, g: 187, b: 0).opacity(0.8) : .init(r: 0, g: 220, b: 239)))
                     }.padding(.top, 10)
                 }.font(.subheadline)
-                    .foregroundColor(style == .sat || style == .tahNews ? .black : .white)
+                    .foregroundColor(style == .sat || style == .tahNews || style == .tahNaturalDay ? .black : .white)
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
             HStack(alignment: .bottom) {
 //                (Text("About My Mac ").font(.system(size: 12)).bold() + Text("v\(AppInfo.version) (\(AppInfo.build))").font(.system(size: 10)).fontWeight(.light))

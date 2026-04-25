@@ -102,6 +102,8 @@ struct PreferencesView : View {
                             SelectStyleButton(selectedStyle: $selectedStyle, style: .tahDusk, gradient: [.init("26D1"), .init("26D2")])
                             
                             SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNews, gradient: [.init("26N1"), .init("26N2")])
+
+                            SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNaturalMidnight, gradient: [.init("26NM1"), .init("26NM2")])
                             
                         }
                         
@@ -110,6 +112,8 @@ struct PreferencesView : View {
                             SelectStyleButton(selectedStyle: $selectedStyle, style: .tahDay, gradient: [.init("26L1"), .init("26L2")])
                             
                             SelectStyleButton(selectedStyle: $selectedStyle, style: .goaGold, gradient: [.init("GOA1"), .init("GOA2")])
+
+                            SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNaturalDay, gradient: [.init("26ND1"), .init("26ND2")])
                             
                         }
                         
@@ -217,6 +221,8 @@ enum AMStyles: String {
     case tahPINK = "PinkTahoe"
     case tahSeafoam = "Seafoam"
     case tahNews = "TahNews"
+    case tahNaturalDay = "TahoeNATURALDay"
+    case tahNaturalMidnight = "TahoeNATURALMidnight"
     case goaGold = "GoaGold"
     case sat = "SequoiaAdventureTeam"
     
@@ -228,6 +234,8 @@ enum AMStyles: String {
         case .tahWine: "26W1"
         case .tahSeafoam: "26S1"
         case .tahNews: "26N1"
+        case .tahNaturalDay: "26ND1"
+        case .tahNaturalMidnight: "26NM1"
         case .goaGold: "GOA1"
         default: "26L1"
         }
@@ -241,6 +249,8 @@ enum AMStyles: String {
         case .tahWine: "26W2"
         case .tahSeafoam: "26S2"
         case .tahNews: "26N2"
+        case .tahNaturalDay: "26ND2"
+        case .tahNaturalMidnight: "26NM2"
         case .goaGold: "GOA2"
         default: "26L2"
         }
@@ -254,6 +264,8 @@ enum AMStyles: String {
         case .tahWine: "26WR"
         case .tahSeafoam: "26SR"
         case .tahNews: "26NR"
+        case .tahNaturalDay: "26NDR"
+        case .tahNaturalMidnight: "26NMR"
         case .goaGold: "GOAR"
         default: "26LR"
         }
@@ -261,7 +273,7 @@ enum AMStyles: String {
     
     var image26: String {
         switch self {
-        case .tahDay, .tahDusk, .tahWine, .tahSeafoam, .tahNews, .goaGold:
+        case .tahDay, .tahDusk, .tahWine, .tahSeafoam, .tahNews, .tahNaturalDay, .tahNaturalMidnight, .goaGold:
             self.rawValue
         default: Self.tahDay.rawValue
         }

@@ -337,6 +337,9 @@ func getMacName(infoString: String) -> String {
         case "Mac15,7", "Mac15,9", "Mac15,11":
             return "MacBook Pro (16-inch, Nov 2023)"
             
+        case "Mac17,9":
+            return "MacBook Pro (14-inch, 2026)"
+            
             
         default:
             return "Mac"
