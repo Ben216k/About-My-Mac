@@ -31,8 +31,11 @@ struct ContentView: View {
             }
             HStack {
                 SideImageView(releaseTrack: releaseTrack, version: systemVersion, style: style)
+                    .padding(.leading, systemVersion.hasPrefix("27") ? -15 : 0)
                 VStack(alignment: .leading, spacing: 2) {
-                    if systemVersion.hasPrefix("26") {
+                    if systemVersion.hasPrefix("27") {
+                        Text("macOS ").font(.largeTitle).bold() + Text("Golden Gate").font(.largeTitle)
+                    } else if systemVersion.hasPrefix("26") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Tahoe").font(.largeTitle)
                     } else if systemVersion.hasPrefix("15") {
                         (Text("macOS ").font(.largeTitle).bold() + Text("Sequoia").font(.largeTitle))
@@ -152,7 +155,23 @@ struct SideImageView: View {
     @State var checkpoint = 0
     
     var body: some View {
-        if version.hasPrefix("26")  {
+        if version.hasPrefix("27") {
+            
+            ZStack {
+                Circle()
+                    .foregroundColor(Color(style.colorR))
+                    .blendMode(.normal)
+                Image(style.image26)
+                    .interpolation(.high)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(100)
+                    .padding(6)
+            }.frame(width: scale, height: scale)
+                .padding()
+            
+        } else if version.hasPrefix("26") {
+            
             ZStack {
                 Circle()
                     .foregroundColor(Color(style.colorR))
@@ -165,6 +184,7 @@ struct SideImageView: View {
                     .padding(8)
             }.frame(width: scale, height: scale)
                 .padding()
+            
         } else if version.hasPrefix("15")  {
             ZStack {
                 if style == .sat {
@@ -324,43 +344,16 @@ struct BackGradientView: View {
     
     var body: some View {
         Group {
-            if version.hasPrefix("26") {
-//                ZStack {
-//                    if style == .tahDusk {
-//                        LinearGradient(gradient: .init(colors: [.init("26D1"), .init("26D2")]), startPoint: startPoint, endPoint: endPoint)
-//                            .onAppear {
-//                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
-//                                    self.endPoint = UnitPoint(x: -1.5, y: 0.5)
-//                                    self.startPoint = UnitPoint(x: 1, y: -1)
-//                                }
-//                            }.blendMode(.normal)
-//                    } else if style == .tahPINK {
-//                        LinearGradient(gradient: .init(colors: [.init("14P1"), .init("P2NK")]), startPoint: startPoint, endPoint: endPoint)
-//                            .onAppear {
-//                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
-//                                    self.endPoint = UnitPoint(x: -1.5, y: 0.5)
-//                                    self.startPoint = UnitPoint(x: 1, y: -1)
-//                                }
-//                            }.blendMode(.normal)
-//                    } else {
-//                        LinearGradient(gradient: .init(colors: [.init("26L1"), .init("26L2")]), startPoint: startPoint, endPoint: endPoint)
-//                            .onAppear {
-//                                withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
-//                                    self.endPoint = UnitPoint(x: 1.5, y: 0.5)
-//                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-//                                }
-//                            }.blendMode(.normal)
-//                    }
-//                }
+            if version.hasPrefix("27") || version.hasPrefix("26") {
+                
                 LinearGradient(gradient: .init(colors: [.init(style.color1), .init(style.color2)]), startPoint: startPoint, endPoint: endPoint)
                     .onAppear {
                         withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
-//                            self.endPoint = UnitPoint(x: -1.5, y: 0.5)
-//                            self.startPoint = UnitPoint(x: 1, y: -1)
                             self.endPoint = UnitPoint(x: 1.5, y: 0.5)
                             self.startPoint = UnitPoint(x: 0.5, y: 1.75)
                         }
                     }.blendMode(.normal)
+                
             } else if version.hasPrefix("15") {
                 ZStack {
                     if style == .seqDark {
@@ -397,8 +390,6 @@ struct BackGradientView: View {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                     self.endPoint = UnitPoint(x: 1.5, y: 1)
                                     self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
-//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
                                 }
                             }.blendMode(.normal)
                     } else if style == .sonPink {
@@ -407,8 +398,6 @@ struct BackGradientView: View {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                     self.endPoint = UnitPoint(x: 1.5, y: 1)
                                     self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
-//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
                                 }
                             }.blendMode(.normal)
                     } else if style == .sonBlue {
@@ -417,8 +406,6 @@ struct BackGradientView: View {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                     self.endPoint = UnitPoint(x: 1.5, y: 1)
                                     self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
-//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
                                 }
                             }.blendMode(.normal)
                     } else {
@@ -427,8 +414,6 @@ struct BackGradientView: View {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                     self.endPoint = UnitPoint(x: 1.5, y: 1)
                                     self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
-//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
                                 }
                             }.blendMode(.normal)
                     }
@@ -441,8 +426,6 @@ struct BackGradientView: View {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                     self.endPoint = UnitPoint(x: 1.5, y: 1)
                                     self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
-//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
                                 }
                             }.blendMode(.normal)
                     } else if style == .venBlue {
@@ -451,8 +434,6 @@ struct BackGradientView: View {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
                                     self.endPoint = UnitPoint(x: 1.5, y: 1)
                                     self.startPoint = UnitPoint(x: 0.5, y: 1.75)
-//                                    self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
-//                                    self.lstartPoint = UnitPoint(x: 0, y: 1)
                                 }
                             }.blendMode(.normal)
                     } else {
@@ -460,8 +441,6 @@ struct BackGradientView: View {
                             .blendMode(.normal)
                             .onAppear {
                                 withAnimation (.easeInOut(duration: 7.5).repeatForever().delay(2)) {
-//                                    self.endPoint = UnitPoint(x: 1.5, y: 1)
-//                                    self.startPoint = UnitPoint(x: 0.5, y: 1.75)
                                     self.lendPoint = UnitPoint(x: 0.9, y: 0.75)
                                     self.lstartPoint = UnitPoint(x: 0, y: 1)
                                 }

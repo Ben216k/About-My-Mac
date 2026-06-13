@@ -18,7 +18,3 @@ struct AMMTheme {
         let startPoint = UnitPoint(x: 0.5, y: 1.75)
     }
 }
-
-//let allThemes: [AMMTheme] = [
-//    .init(themeId: <#T##String#>, image: <#T##String#>, graident: <#T##AMMTheme.Gradient#>, circleColor: <#T##Color?#>)
-//]

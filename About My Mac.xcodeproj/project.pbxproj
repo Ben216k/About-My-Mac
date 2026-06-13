@@ -27,6 +27,7 @@
 /* Begin PBXFileReference section */
 		7606D60B29F46947005FB3F9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7621D23828AEAB90009A2CD9 /* VIButtonMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIButtonMask.swift; sourceTree = "<group>"; };
+		7626BDF32FDDD65D00EF0A25 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		76271503285453580021208A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		763194C22B7D1C20006BDDC1 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		764AE03428510B4100B58C10 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				7606D60B29F46947005FB3F9 /* README.md */,
+				7626BDF32FDDD65D00EF0A25 /* .gitignore */,
 				76B14C1F26F9758200E914CF /* About My Mac */,
 				76B14C1E26F9758200E914CF /* Products */,
 			);
@@ -359,7 +361,7 @@
 				CODE_SIGN_ENTITLEMENTS = "About My Mac/About My Mac.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"About My Mac/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_APP_SANDBOX = YES;
@@ -374,7 +376,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0beta9;
+				MARKETING_VERSION = 1.0.0beta10;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.About-My-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -390,7 +392,7 @@
 				CODE_SIGN_ENTITLEMENTS = "About My Mac/About My MacRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"About My Mac/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_APP_SANDBOX = YES;
@@ -405,7 +407,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0beta9;
+				MARKETING_VERSION = 1.0.0beta10;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.About-My-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

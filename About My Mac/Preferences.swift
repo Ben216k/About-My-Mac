@@ -95,7 +95,7 @@ struct PreferencesView : View {
                         
                     } else if sysVersion.hasPrefix("26") {
                         
-                        // MARK: Sequoia Styles
+                        // MARK: Tahoe Styles
                         
                         VStack(spacing: 0) {
                             
@@ -122,6 +122,15 @@ struct PreferencesView : View {
                         SelectStyleButton(selectedStyle: $selectedStyle, style: .tahWine, gradient: [.init("26W1"), .init("26W2")])
                     
                         
+                    } else if sysVersion.hasPrefix("27") {
+                        
+                        // MARK: Golden Gate Styles
+
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .goldenGate1, gradient: [.init("27L1"), .init("27L2")])
+
+                        SelectStyleButton(selectedStyle: $selectedStyle, style: .goldenGate2, gradient: [.init("27D1"), .init("27D2")])
+
+
                     }
 
                 }.padding(.top, -5)
@@ -224,6 +233,10 @@ enum AMStyles: String {
     case tahNaturalDay = "TahoeNATURALDay"
     case tahNaturalMidnight = "TahoeNATURALMidnight"
     case goaGold = "GoaGold"
+    case goldenGate1 = "GoldenGateLight"
+    case goldenGate2 = "GoldenGateDark"
+    case goldenGate3 = "GoldenGate3"
+    case goldenGate4 = "GoldenGate4"
     case sat = "SequoiaAdventureTeam"
     
     var color1: String {
@@ -237,6 +250,10 @@ enum AMStyles: String {
         case .tahNaturalDay: "26ND1"
         case .tahNaturalMidnight: "26NM1"
         case .goaGold: "GOA1"
+        case .goldenGate1: "27L1"
+        case .goldenGate2: "27D1"
+        case .goldenGate3: "26N1"
+        case .goldenGate4: "26W1"
         default: "26L1"
         }
     }
@@ -252,6 +269,10 @@ enum AMStyles: String {
         case .tahNaturalDay: "26ND2"
         case .tahNaturalMidnight: "26NM2"
         case .goaGold: "GOA2"
+        case .goldenGate1: "27L2"
+        case .goldenGate2: "27D2"
+        case .goldenGate3: "26N2"
+        case .goldenGate4: "26W2"
         default: "26L2"
         }
     }
@@ -267,13 +288,17 @@ enum AMStyles: String {
         case .tahNaturalDay: "26NDR"
         case .tahNaturalMidnight: "26NMR"
         case .goaGold: "GOAR"
+        case .goldenGate1: "27LR"
+        case .goldenGate2: "27DR"
+        case .goldenGate3: "26NR"
+        case .goldenGate4: "26WR"
         default: "26LR"
         }
     }
     
     var image26: String {
         switch self {
-        case .tahDay, .tahDusk, .tahWine, .tahSeafoam, .tahNews, .tahNaturalDay, .tahNaturalMidnight, .goaGold:
+        case .tahDay, .tahDusk, .tahWine, .tahSeafoam, .tahNews, .tahNaturalDay, .tahNaturalMidnight, .goaGold, .goldenGate1, .goldenGate2:
             self.rawValue
         default: Self.tahDay.rawValue
         }
