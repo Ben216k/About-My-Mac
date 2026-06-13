@@ -375,7 +375,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0.0beta10;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.About-My-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,7 +406,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0.0beta10;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.About-My-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
