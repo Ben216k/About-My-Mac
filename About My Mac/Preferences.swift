@@ -103,7 +103,7 @@ struct PreferencesView : View {
                             
                             SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNews, gradient: [.init("26N1"), .init("26N2")])
 
-                            SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNaturalMidnight, gradient: [.init("26NM1"), .init("26NM2")])
+//                            SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNaturalMidnight, gradient: [.init("26NM1"), .init("26NM2")])
                             
                         }
                         
@@ -113,7 +113,7 @@ struct PreferencesView : View {
                             
                             SelectStyleButton(selectedStyle: $selectedStyle, style: .goaGold, gradient: [.init("GOA1"), .init("GOA2")])
 
-                            SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNaturalDay, gradient: [.init("26ND1"), .init("26ND2")])
+//                            SelectStyleButton(selectedStyle: $selectedStyle, style: .tahNaturalDay, gradient: [.init("26ND1"), .init("26ND2")])
                             
                         }
                         
